@@ -7,7 +7,6 @@ const compression = require("compression");
 const path = require("path");
 const socketio = require("socket.io");
 const jwt = require("jwt-simple");
-const User = require("./models/User");
 
 const apiRouter = require("./routes");
 
