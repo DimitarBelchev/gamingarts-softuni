@@ -1,6 +1,6 @@
 const jwt = require("jwt-simple");
 const crypto = require("crypto");
-const User = require("../models/User");
+const User = require("../models/user");
 const ConfirmationToken = require("../models/ConfirmationToken");
 const bcrypt = require("bcrypt");
 const axios = require("axios");
