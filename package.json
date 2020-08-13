@@ -13,7 +13,7 @@
     "backend": "cd server && nodemon index.js",
     "frontend": "cd client && npm run start",
     "app": "concurrently --names \"backend,frontend\" \"npm run backend --silent\" \"npm run frontend --silent\"",
-    "start": "node index.js",
+    "start": "cd server && node index.js",
     "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
   "keywords": [],
