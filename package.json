@@ -15,7 +15,7 @@
     "web": "cd server && node index.js",
     "app": "concurrently --names \"backend,frontend\" \"npm run backend --silent\" \"npm run frontend --silent\"",
     "start": "node index.js",
-    "heroku-postbuild": "cd client && npm run build"
+    "heroku-postbuild": "cd client && npm build"
   },
   "keywords": [],
   "author": "Dimitar Belchev",
