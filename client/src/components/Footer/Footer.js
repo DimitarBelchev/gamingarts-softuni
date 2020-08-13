@@ -18,12 +18,7 @@ const Footer = () => (
         className="heading-4 color-dark font-bold"
         style={{ display: "flex", alignItems: "center" }}
       >
-        <Icon
-          className="icon--small color-dark"
-          icon="pencil"
-          style={{ display: "inline-block", margin: "0 5px" }}
-        />{" "}
-        Made by Dimitar Belchev
+        @Made by Dimitar Belchev 2020 SOFTUNI PROJECT
       </h4>
     </div>
   </footer>
