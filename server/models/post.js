@@ -1,34 +1,37 @@
-const mongoose = require('mongoose')
-const { ObjectId } = mongoose.Schema;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-const postSchema = new mongoose.Schema({
-    title: {
-        type: String,
-        required: true
+const PostSchema = new Schema({
+  image: String,
+  filter: String,
+  thumbnail: String,
+  caption: String,
+  hashtags: [
+    {
+      type: String,
+      lowercase: true,
     },
-    body: {
-        type: String,
-        required: true
-    },
-    photo: {
-        data: Buffer,
-        contentType: String
-    },
-    postedBy: {
-        type: ObjectId,
-        ref: "User"
-    },
-    created: {
-        type: Date,
-        default: Date.now
-    },
-    updated: Date,
-    likes: [{type: ObjectId, ref: "User"}],
-    comments: [{
-        text: String,
-        created: { type: Date, default: Date.now },
-        postedBy: { type: ObjectId, ref: "User" }
-    }]
+  ],
+  date: {
+    type: Date,
+    default: Date.now,
+  },
+  author: {
+    type: Schema.ObjectId,
+    ref: 'User',
+  },
 });
 
-module.exports = mongoose.model("Post", postSchema);
+PostSchema.pre('deleteOne', async function (next) {
+  const postId = this.getQuery()['_id'];
+  try {
+    await mongoose.model('PostVote').deleteOne({ post: postId });
+    await mongoose.model('Comment').deleteMany({ post: postId });
+    next();
+  } catch (err) {
+    next(err);
+  }
+});
+
+const postModel = mongoose.model('Post', PostSchema);
+module.exports = postModel;

@@ -1,45 +1,40 @@
-const express = require('express')
+const express = require('express');
+const postRouter = express.Router();
+const multer = require('multer');
+const upload = multer({
+  dest: 'temp/',
+  limits: { fileSize: 10 * 1024 * 1024 },
+}).single('image');
+const rateLimit = require('express-rate-limit');
 
-const { requireSignin } = require('../controllers/auth');
-const { getPosts, createPost, postsByUser, postById, isPoster, deletePost, updatePost, photo, singlePost, like, unlike, comment, uncomment, countPosts, createPostRn, getPostPhotoRn, getAllPostsRn, updatePostRn } = require('../controllers/post')
-const { userById } = require('../controllers/user');
-const { createPostValidator } = require('../validator/index');
+const { requireAuth } = require('../controllers/authController');
+const {
+  createPost,
+  retrievePost,
+  votePost,
+  deletePost,
+  retrievePostFeed,
+  retrieveSuggestedPosts,
+  retrieveHashtagPosts,
+} = require('../controllers/postController');
+const filters = require('../utils/filters');
 
-const router = express.Router();
+const postLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 5,
+});
 
-router.get('/posts', getPosts);
-router.get('/rn/allposts', getAllPostsRn);
+postRouter.post('/', postLimiter, requireAuth, upload, createPost);
+postRouter.post('/:postId/vote', requireAuth, votePost);
 
-router.get('/count/posts', countPosts);
+postRouter.get('/suggested/:offset', requireAuth, retrieveSuggestedPosts);
+postRouter.get('/filters', (req, res) => {
+  res.send({ filters });
+});
+postRouter.get('/:postId', retrievePost);
+postRouter.get('/feed/:offset', requireAuth, retrievePostFeed);
+postRouter.get('/hashtag/:hashtag/:offset', requireAuth, retrieveHashtagPosts);
 
-//like unlike
-router.put("/post/like", requireSignin, like);
-router.put("/post/unlike", requireSignin, unlike);
+postRouter.delete('/:postId', requireAuth, deletePost);
 
-//comments
-router.put("/post/comment", requireSignin, comment);
-router.put("/post/uncomment", requireSignin, uncomment);
-
-router.post("/post/new/:userId", requireSignin, createPost, createPostValidator);
-router.post("/rn/post/new/:userId", requireSignin, createPostRn);
-
-// router.get("/post/rn/new", getPostPhotoRn);
-
-router.get("/post/by/:userId", postsByUser);
-router.get("/post/:postId", singlePost);
-
-router.put("/post/:postId", requireSignin, isPoster, updatePost);
-router.put("/rn/post/:postId", requireSignin, isPoster, updatePostRn);
-
-router.delete("/post/:postId", requireSignin, isPoster, deletePost);
-
-//post's photo
-router.get("/post/photo/:postId", photo);
-
-
-// any route containing :userId, this is execute first
-router.param("userId", userById);
-// any route containing :postId, this is execute first
-router.param("postId", postById);
-
-module.exports = router;
+module.exports = postRouter;

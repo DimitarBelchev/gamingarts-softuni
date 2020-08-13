@@ -1,30 +1,16 @@
 const express = require("express");
+const authRouter = express.Router();
+
 const {
-  signup,
-  signin,
-  signout,
-  forgotPassword,
-  resetPassword,
-  socialLogin,
-} = require("../controllers/auth");
-const { userById } = require("../controllers/user");
-const {
-  userSignupValidator,
-  passwordResetValidator,
-} = require("../validator/index");
+  loginAuthentication,
+  register,
+  requireAuth,
+  changePassword,
+} = require("../controllers/authController");
 
-const router = express.Router();
+authRouter.post("/login", loginAuthentication);
+authRouter.post("/register", register);
 
-router.post("/signup", userSignupValidator, signup);
-router.post("/signin", signin);
-router.get("/signout", signout);
-router.post("/social-login", socialLogin);
+authRouter.put("/password", requireAuth, changePassword);
 
-// password forgot and reset routes
-router.put("/forgot-password", forgotPassword);
-router.put("/reset-password", passwordResetValidator, resetPassword);
-
-// any route containing :userId, this is execute first
-router.param("userId", userById);
-
-module.exports = router;
+module.exports = authRouter;

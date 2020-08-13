@@ -1,27 +1,45 @@
-const express = require('express')
+const express = require('express');
+const userRouter = express.Router();
+const multer = require('multer');
 
-const { userById, allUsers, getUser, updateUser, deleteUser, userPhoto, addFollowing, addFollower, removeFollowing, removeFollower, findPeople, updateUserRn } = require('../controllers/user');
-const { requireSignin } = require('../controllers/auth');
+const {
+  retrieveUser,
+  retrievePosts,
+  bookmarkPost,
+  followUser,
+  retrieveFollowing,
+  retrieveFollowers,
+  searchUsers,
+  confirmUser,
+  changeAvatar,
+  removeAvatar,
+  updateProfile,
+  retrieveSuggestedUsers,
+} = require('../controllers/userController');
+const { requireAuth, optionalAuth } = require('../controllers/authController');
 
+userRouter.get('/suggested/:max?', requireAuth, retrieveSuggestedUsers);
+userRouter.get('/:username', optionalAuth, retrieveUser);
+userRouter.get('/:username/posts/:offset', retrievePosts);
+userRouter.get('/:userId/:offset/following', requireAuth, retrieveFollowing);
+userRouter.get('/:userId/:offset/followers', requireAuth, retrieveFollowers);
+userRouter.get('/:username/:offset/search', searchUsers);
 
-const router = express.Router();
+userRouter.put('/confirm', requireAuth, confirmUser);
+userRouter.put(
+  '/avatar',
+  requireAuth,
+  multer({
+    dest: 'temp/',
+    limits: { fieldSize: 8 * 1024 * 1024, fileSize: 1000000 },
+  }).single('image'),
+  changeAvatar
+);
+userRouter.put('/', requireAuth, updateProfile);
 
-router.put('/user/follow', requireSignin, addFollowing, addFollower);    
-router.put('/user/unfollow', requireSignin, removeFollowing, removeFollower );    
+userRouter.delete('/avatar', requireAuth, removeAvatar);
 
-router.get("/users", allUsers);
-router.get("/user/:userId", requireSignin, getUser);
-router.put("/user/:userId", requireSignin, updateUser);
-router.put("/rn/user/:userId", requireSignin, updateUserRn);
-router.delete("/user/:userId", requireSignin, deleteUser);
+userRouter.post('/:postId/bookmark', requireAuth, bookmarkPost);
+userRouter.post('/:userId/follow', requireAuth, followUser);
 
-//photo
-router.get("/user/photo/:userId", userPhoto);
-
-// follow suggestions
-router.get("/user/findpeople/:userId", requireSignin, findPeople);
-
-// any route containing :userId, this is execute first
-router.param("userId", userById);
-
-module.exports = router;
+module.exports = userRouter;
