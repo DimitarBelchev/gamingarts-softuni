@@ -1,20 +1,19 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const FollowingSchema = new Schema({
   user: {
     type: Schema.ObjectId,
-    ref: 'User'
+    ref: "User",
   },
   following: [
     {
       user: {
         type: Schema.ObjectId,
-        ref: 'User'
-      }
-    }
-  ]
+        ref: "User",
+      },
+    },
+  ],
 });
-
-const followingModel = mongoose.model('Following', FollowingSchema);
+const followingModel = mongoose.model("Following", FollowingSchema);
 module.exports = followingModel;

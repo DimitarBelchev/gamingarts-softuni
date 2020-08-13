@@ -7,7 +7,6 @@ const handlebars = require("handlebars");
 const linkify = require("linkifyjs");
 require("linkifyjs/plugins/mention")(linkify);
 const fs = require("fs");
-
 const socketHandler = require("../handlers/socketHandler");
 
 /**

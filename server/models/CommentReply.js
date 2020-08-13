@@ -1,10 +1,9 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-
 const CommentReplySchema = new Schema({
   parentComment: {
     type: Schema.ObjectId,
-    ref: 'Comment',
+    ref: "Comment",
   },
   date: {
     type: Date,
@@ -13,19 +12,19 @@ const CommentReplySchema = new Schema({
   message: String,
   author: {
     type: Schema.ObjectId,
-    ref: 'User',
+    ref: "User",
   },
 });
 
-CommentReplySchema.pre('deleteMany', async function (next) {
-  const parentCommentId = this.getQuery()['parentComment'];
+CommentReplySchema.pre("deleteMany", async function (next) {
+  const parentCommentId = this.getQuery()["parentComment"];
   try {
     const commentReply = await mongoose
-      .model('CommentReply')
+      .model("CommentReply")
       .findOne({ parentComment: parentCommentId });
     if (commentReply) {
       await mongoose
-        .model('CommentReplyVote')
+        .model("CommentReplyVote")
         .deleteOne({ comment: commentReply._id });
     }
     next();
@@ -34,11 +33,11 @@ CommentReplySchema.pre('deleteMany', async function (next) {
   }
 });
 
-CommentReplySchema.pre('deleteOne', async function (next) {
-  const commentReplyId = this.getQuery()['_id'];
+CommentReplySchema.pre("deleteOne", async function (next) {
+  const commentReplyId = this.getQuery()["_id"];
   try {
     await mongoose
-      .model('CommentReplyVote')
+      .model("CommentReplyVote")
       .deleteOne({ comment: commentReplyId });
     next();
   } catch (err) {
@@ -46,10 +45,10 @@ CommentReplySchema.pre('deleteOne', async function (next) {
   }
 });
 
-CommentReplySchema.pre('save', async function (next) {
+CommentReplySchema.pre("save", async function (next) {
   if (this.isNew) {
     try {
-      await mongoose.model('CommentReplyVote').create({ comment: this._id });
+      await mongoose.model("CommentReplyVote").create({ comment: this._id });
       next();
     } catch (err) {
       return next(err);
@@ -58,5 +57,5 @@ CommentReplySchema.pre('save', async function (next) {
   next();
 });
 
-const commentReplyModel = mongoose.model('CommentReply', CommentReplySchema);
+const commentReplyModel = mongoose.model("CommentReply", CommentReplySchema);
 module.exports = commentReplyModel;

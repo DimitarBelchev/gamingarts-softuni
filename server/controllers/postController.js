@@ -9,7 +9,6 @@ const Notification = require("../models/Notification");
 const socketHandler = require("../handlers/socketHandler");
 const fs = require("fs");
 const ObjectId = require("mongoose").Types.ObjectId;
-
 const {
   retrieveComments,
   formatCloudinaryUrl,

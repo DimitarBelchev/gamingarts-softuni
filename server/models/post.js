@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const PostSchema = new Schema({
@@ -18,20 +18,19 @@ const PostSchema = new Schema({
   },
   author: {
     type: Schema.ObjectId,
-    ref: 'User',
+    ref: "User",
   },
 });
-
-PostSchema.pre('deleteOne', async function (next) {
-  const postId = this.getQuery()['_id'];
+PostSchema.pre("deleteOne", async function (next) {
+  const postId = this.getQuery()["_id"];
   try {
-    await mongoose.model('PostVote').deleteOne({ post: postId });
-    await mongoose.model('Comment').deleteMany({ post: postId });
+    await mongoose.model("PostVote").deleteOne({ post: postId });
+    await mongoose.model("Comment").deleteMany({ post: postId });
     next();
   } catch (err) {
     next(err);
   }
 });
 
-const postModel = mongoose.model('Post', PostSchema);
+const postModel = mongoose.model("Post", PostSchema);
 module.exports = postModel;

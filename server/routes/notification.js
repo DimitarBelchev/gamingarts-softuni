@@ -1,14 +1,13 @@
-const express = require('express');
+const express = require("express");
 const notificationRouter = express.Router();
-
 const {
   retrieveNotifications,
   readNotifications,
-} = require('../controllers/notificationController');
-const { requireAuth } = require('../controllers/authController');
+} = require("../controllers/notificationController");
+const { requireAuth } = require("../controllers/authController");
 
-notificationRouter.get('/', requireAuth, retrieveNotifications);
+notificationRouter.get("/", requireAuth, retrieveNotifications);
 
-notificationRouter.put('/', requireAuth, readNotifications);
+notificationRouter.put("/", requireAuth, readNotifications);
 
 module.exports = notificationRouter;

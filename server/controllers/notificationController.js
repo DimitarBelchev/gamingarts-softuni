@@ -1,6 +1,5 @@
-const Notification = require('../models/Notification');
-const ObjectId = require('mongoose').Types.ObjectId;
-
+const Notification = require("../models/Notification");
+const ObjectId = require("mongoose").Types.ObjectId;
 module.exports.retrieveNotifications = async (req, res, next) => {
   const user = res.locals.user;
 
@@ -14,43 +13,43 @@ module.exports.retrieveNotifications = async (req, res, next) => {
       },
       {
         $lookup: {
-          from: 'users',
-          localField: 'sender',
-          foreignField: '_id',
-          as: 'sender',
+          from: "users",
+          localField: "sender",
+          foreignField: "_id",
+          as: "sender",
         },
       },
       {
         $lookup: {
-          from: 'users',
-          localField: 'receiver',
-          foreignField: '_id',
-          as: 'receiver',
+          from: "users",
+          localField: "receiver",
+          foreignField: "_id",
+          as: "receiver",
         },
       },
       {
-        $unwind: '$sender',
+        $unwind: "$sender",
       },
       {
-        $unwind: '$receiver',
+        $unwind: "$receiver",
       },
       // Look for the sender's followers
       {
         $lookup: {
-          from: 'followers',
-          localField: 'sender._id',
-          foreignField: 'user',
-          as: 'senderFollowers',
+          from: "followers",
+          localField: "sender._id",
+          foreignField: "user",
+          as: "senderFollowers",
         },
       },
       {
-        $unwind: '$senderFollowers',
+        $unwind: "$senderFollowers",
       },
       // Check for the receiver's id in the sender's followers array
       {
         $addFields: {
           isFollowing: {
-            $in: ['$receiver._id', '$senderFollowers.followers.user'],
+            $in: ["$receiver._id", "$senderFollowers.followers.user"],
           },
         },
       },
@@ -61,10 +60,10 @@ module.exports.retrieveNotifications = async (req, res, next) => {
           isFollowing: true,
           date: true,
           notificationData: true,
-          'sender.username': true,
-          'sender.avatar': true,
-          'sender._id': true,
-          'receiver._id': true,
+          "sender.username": true,
+          "sender.avatar": true,
+          "sender._id": true,
+          "receiver._id": true,
         },
       },
     ]);
