@@ -4,7 +4,6 @@ const User = require("../models/User");
 const ConfirmationToken = require("../models/ConfirmationToken");
 const bcrypt = require("bcrypt");
 const axios = require("axios");
-const User = require("../models/User");
 
 const {
   sendConfirmationEmail,
