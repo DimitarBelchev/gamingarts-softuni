@@ -2,7 +2,7 @@
   "name": "softuni-react-gamingarts",
   "version": "1.0.0",
   "description": "",
-  "main": "server/index.js",
+  "main": "index.js",
   "engines": {
     "node": "14.5.0",
     "npm": "6.14.5"
@@ -12,10 +12,10 @@
     "server": "cd server && nodemon index.js",
     "backend": "cd server && nodemon index.js",
     "frontend": "cd client && npm run start",
-    "web": "npm run start",
+    "web": "node index.js",
     "app": "concurrently --names \"backend,frontend\" \"npm run backend --silent\" \"npm run frontend --silent\"",
-    "start": "cd server && node index.js",
-    "heroku-postbuild": "cd client && npm build"
+    "start": "node server/index.js",
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "keywords": [],
   "author": "Dimitar Belchev",
