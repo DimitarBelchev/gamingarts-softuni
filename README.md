@@ -1,8 +1,7 @@
 Gaming Arts project made by Dimitar Belchev.
 
 Bonuses:
-Heroku Deployment:https://gamingarts.herokuapp.com/
-
+Heroku Deployment:https://gamingartsreact.herokuapp.com/
 Onedrive file storage:https://1drv.ms/u/s!ArSmWeqlGQawige0CGxkltgVUt2f?e=MO4HKP
 
 How to install:
