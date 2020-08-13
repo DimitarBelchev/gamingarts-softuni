@@ -5,6 +5,7 @@ const postRouter = require("./post");
 const commentRouter = require("./comment");
 const notificationRouter = require("./notification");
 const apiRouter = express.Router();
+const User = require("../models/User");
 
 apiRouter.use("/auth", authRouter);
 apiRouter.use("/user", userRouter);
