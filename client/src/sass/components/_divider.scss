@@ -3,7 +3,6 @@
   height: 1px;
   background-color: $color-grey-2;
   margin: 0 auto;
-
   &--split {
     display: grid;
     grid-template-columns: 1fr min-content 1fr;
@@ -13,14 +12,14 @@
 
     &::before {
       grid-column: 1;
-      content: '';
+      content: "";
       background-color: currentColor;
       height: 1px;
       display: block;
     }
     &::after {
       grid-column: 3;
-      content: '';
+      content: "";
       background-color: currentColor;
       height: 1px;
       display: block;

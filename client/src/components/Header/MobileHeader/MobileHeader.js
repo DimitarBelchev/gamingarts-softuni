@@ -2,9 +2,7 @@ import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { useHistory } from "react-router-dom";
-
 import { selectCurrentUser } from "../../../redux/user/userSelectors";
-
 import Icon from "../../Icon/Icon";
 import Button from "../../Button/Button";
 import TextButton from "../../Button/TextButton/TextButton";

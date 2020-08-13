@@ -1,18 +1,16 @@
-import React, { useEffect, useReducer, useRef } from 'react';
-
+import React, { useEffect, useReducer, useRef } from "react";
 import {
   retrieveUserFollowing,
   retrieveUserFollowers,
-} from '../../services/profileService';
+} from "../../services/profileService";
+import useScrollPositionThrottled from "../../hooks/useScrollPositionThrottled";
 
-import useScrollPositionThrottled from '../../hooks/useScrollPositionThrottled';
+import { usersListReducer, INITIAL_STATE } from "./usersListReducer";
 
-import { usersListReducer, INITIAL_STATE } from './usersListReducer';
-
-import UserCard from '../UserCard/UserCard';
-import UsersListSkeleton from './UsersListSkeleton/UsersListSkeleton';
-import Icon from '../Icon/Icon';
-import FollowButton from '../Button/FollowButton/FollowButton';
+import UserCard from "../UserCard/UserCard";
+import UsersListSkeleton from "./UsersListSkeleton/UsersListSkeleton";
+import Icon from "../Icon/Icon";
+import FollowButton from "../Button/FollowButton/FollowButton";
 
 const UsersList = ({
   userId,
@@ -33,13 +31,13 @@ const UsersList = ({
       !state.fetchingAdditional
     ) {
       try {
-        dispatch({ type: 'FETCH_ADDITIONAL_START' });
+        dispatch({ type: "FETCH_ADDITIONAL_START" });
         const response = following
           ? await retrieveUserFollowing(userId, state.data.length, token)
           : await retrieveUserFollowers(userId, state.data.length, token);
-        dispatch({ type: 'ADD_USERS', payload: response });
+        dispatch({ type: "ADD_USERS", payload: response });
       } catch (err) {
-        dispatch({ type: 'FETCH_FAILURE', payload: err });
+        dispatch({ type: "FETCH_FAILURE", payload: err });
       }
     }
   }, componentRef.current);
@@ -50,7 +48,7 @@ const UsersList = ({
   useEffect(() => {
     (async function () {
       try {
-        dispatch({ type: 'FETCH_START' });
+        dispatch({ type: "FETCH_START" });
         const response = followingRef
           ? await retrieveUserFollowing(
               userId,
@@ -62,9 +60,9 @@ const UsersList = ({
               stateRef ? stateRef.length : 0,
               token
             );
-        dispatch({ type: 'FETCH_SUCCESS', payload: response });
+        dispatch({ type: "FETCH_SUCCESS", payload: response });
       } catch (err) {
-        dispatch({ type: 'FETCH_FAILURE', payload: err });
+        dispatch({ type: "FETCH_FAILURE", payload: err });
       }
     })();
   }, [userId, token, stateRef, followingRef]);
@@ -73,19 +71,19 @@ const UsersList = ({
     <section
       className="following-overview"
       ref={componentRef}
-      style={{ overflowY: 'auto' }}
+      style={{ overflowY: "auto" }}
     >
       {!followersCount && !followingCount ? (
-        <div style={{ padding: '2rem', textAlign: 'center' }}>
+        <div style={{ padding: "2rem", textAlign: "center" }}>
           <Icon
-            style={{ margin: '0 auto' }}
+            style={{ margin: "0 auto" }}
             className="icon--larger"
             icon="person-add-outline"
           />
           <h2 className="heading-2 font-thin">
             {following
-              ? 'People the user follows'
-              : 'People who follow the user'}
+              ? "People the user follows"
+              : "People who follow the user"}
           </h2>
           <h4 className="heading-4 font-medium">
             {following

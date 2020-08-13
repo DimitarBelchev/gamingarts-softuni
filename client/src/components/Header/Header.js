@@ -4,11 +4,8 @@ import { createStructuredSelector } from "reselect";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
 import { useHistory } from "react-router-dom";
-
 import { selectCurrentUser } from "../../redux/user/userSelectors";
-
 import useScrollPositionThrottled from "../../hooks/useScrollPositionThrottled";
-
 import { ReactComponent as LogoCamera } from "../../assets/svg/logo-camera.svg";
 import SearchBox from "../SearchBox/SearchBox";
 import NewPostButton from "../NewPost/NewPostButton/NewPostButton";

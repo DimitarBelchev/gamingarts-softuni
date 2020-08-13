@@ -1,15 +1,14 @@
-import React, { useEffect, memo } from 'react';
-import { connect } from 'react-redux';
-import ReactDOM from 'react-dom';
-import PropTypes from 'prop-types';
-
-import { hideModal } from '../../redux/modal/modalActions';
+import React, { useEffect, memo } from "react";
+import { connect } from "react-redux";
+import ReactDOM from "react-dom";
+import PropTypes from "prop-types";
+import { hideModal } from "../../redux/modal/modalActions";
 
 const Modal = memo(({ component, hideModal, ...additionalProps }) => {
-  const modalRoot = document.querySelector('#modal-root');
-  const el = document.createElement('div');
+  const modalRoot = document.querySelector("#modal-root");
+  const el = document.createElement("div");
   const Child = require(`../../components/${component}`).default;
-  el.className = 'modal grid';
+  el.className = "modal grid";
 
   useEffect(() => {
     const hide = ({ target }) => {
@@ -17,11 +16,11 @@ const Modal = memo(({ component, hideModal, ...additionalProps }) => {
         hideModal(component);
       }
     };
-    el.addEventListener('mousedown', hide, false);
+    el.addEventListener("mousedown", hide, false);
     modalRoot.appendChild(el);
 
     return () => {
-      el.removeEventListener('mousedown', hide, false);
+      el.removeEventListener("mousedown", hide, false);
       modalRoot.removeChild(el);
     };
   }, [el, modalRoot, hideModal, component]);

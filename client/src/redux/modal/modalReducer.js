@@ -1,7 +1,6 @@
-import modalTypes from './modalTypes';
-
+import modalTypes from "./modalTypes";
 const INITIAL_STATE = {
-  modals: []
+  modals: [],
   // show: false,
   // props: undefined,
   // component: undefined
@@ -12,7 +11,7 @@ const modalReducer = (state = INITIAL_STATE, action) => {
     case modalTypes.HIDE_MODAL: {
       const modals = state.modals;
       const modifiedModals = modals.filter(
-        modal => modal.component !== action.payload
+        (modal) => modal.component !== action.payload
       );
       return { modals: modifiedModals };
     }

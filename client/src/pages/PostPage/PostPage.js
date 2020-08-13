@@ -1,8 +1,7 @@
-import React, { Fragment } from 'react';
-import { useParams } from 'react-router-dom';
-
-import PostDialog from '../../components/PostDialog/PostDialog';
-import MobileHeader from '../../components/Header/MobileHeader/MobileHeader';
+import React, { Fragment } from "react";
+import { useParams } from "react-router-dom";
+import PostDialog from "../../components/PostDialog/PostDialog";
+import MobileHeader from "../../components/Header/MobileHeader/MobileHeader";
 
 const PostPage = () => {
   const { postId } = useParams();

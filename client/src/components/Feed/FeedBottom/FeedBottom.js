@@ -1,7 +1,6 @@
-import React from 'react';
-
-import Divider from '../../Divider/Divider';
-import Icon from '../../Icon/Icon';
+import React from "react";
+import Divider from "../../Divider/Divider";
+import Icon from "../../Icon/Icon";
 
 const FeedBottom = () => (
   <div className="feed__bottom">

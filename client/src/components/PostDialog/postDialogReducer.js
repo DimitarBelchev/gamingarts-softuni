@@ -5,8 +5,8 @@ export const INITIAL_STATE = {
   localStateComments: new Set(),
   data: {
     _id: null,
-    image: '',
-    caption: '',
+    image: "",
+    caption: "",
     author: null,
     date: null,
     postVotes: [],
@@ -14,13 +14,12 @@ export const INITIAL_STATE = {
     commentReplies: [],
   },
 };
-
 export const postDialogReducer = (state, action) => {
   switch (action.type) {
-    case 'FETCH_POST_FAILURE': {
+    case "FETCH_POST_FAILURE": {
       return { ...state, fetching: false, error: action.payload };
     }
-    case 'FETCH_POST_SUCCESS': {
+    case "FETCH_POST_SUCCESS": {
       const { comments = [], commentCount = 0 } =
         action.payload.commentData || {};
       return {
@@ -35,7 +34,7 @@ export const postDialogReducer = (state, action) => {
         },
       };
     }
-    case 'VOTE_POST': {
+    case "VOTE_POST": {
       const { currentUser, postId, dispatch } = action.payload;
       let postVotes = JSON.parse(JSON.stringify(state.data.postVotes));
       const liked = !!postVotes.find((vote) => vote.author === currentUser._id);
@@ -46,7 +45,7 @@ export const postDialogReducer = (state, action) => {
       }
       dispatch &&
         dispatch({
-          type: 'SET_POST_VOTES_COUNT',
+          type: "SET_POST_VOTES_COUNT",
           payload: { postId, votes: postVotes.length },
         });
 
@@ -58,7 +57,7 @@ export const postDialogReducer = (state, action) => {
         },
       };
     }
-    case 'VOTE_COMMENT': {
+    case "VOTE_COMMENT": {
       const { commentId, currentUser } = action.payload;
       const comments = JSON.parse(JSON.stringify(state.data.comments));
       const commentIndex = comments.findIndex(
@@ -84,7 +83,7 @@ export const postDialogReducer = (state, action) => {
         },
       };
     }
-    case 'ADD_COMMENT': {
+    case "ADD_COMMENT": {
       let comment = action.payload;
       let localStateComments = new Set(state.localStateComments);
       if (!Array.isArray(comment)) {
@@ -100,7 +99,7 @@ export const postDialogReducer = (state, action) => {
         },
       };
     }
-    case 'REMOVE_COMMENT': {
+    case "REMOVE_COMMENT": {
       const commentId = action.payload;
       const localStateComments = new Set(state.localStateComments);
       localStateComments.has(commentId) && localStateComments.delete(commentId);
@@ -117,7 +116,7 @@ export const postDialogReducer = (state, action) => {
         },
       };
     }
-    case 'ADD_COMMENT_REPLY': {
+    case "ADD_COMMENT_REPLY": {
       let { comment: newComment, parentCommentId } = action.payload;
       const comments = JSON.parse(JSON.stringify(state.data.comments));
       const parentCommentIndex = comments.findIndex(
@@ -141,7 +140,7 @@ export const postDialogReducer = (state, action) => {
         },
       };
     }
-    case 'REMOVE_COMMENT_REPLY': {
+    case "REMOVE_COMMENT_REPLY": {
       const { commentReplyId, parentCommentId } = action.payload;
       const comments = JSON.parse(JSON.stringify(state.data.comments));
       const commentIndex = comments.findIndex(
@@ -160,7 +159,7 @@ export const postDialogReducer = (state, action) => {
         },
       };
     }
-    case 'VOTE_COMMENT_REPLY': {
+    case "VOTE_COMMENT_REPLY": {
       const { commentReplyId, currentUser } = action.payload;
       const commentReplies = JSON.parse(
         JSON.stringify(state.data.commentReplies)
@@ -189,7 +188,7 @@ export const postDialogReducer = (state, action) => {
         },
       };
     }
-    case 'SET_REPLYING': {
+    case "SET_REPLYING": {
       const { username, commentId } = action.payload || {};
       if (username && commentId) {
         // Avoid re-rendering if commentId and commentUser are the same as previous state

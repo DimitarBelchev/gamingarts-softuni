@@ -1,26 +1,24 @@
-import React, { useState, useEffect } from 'react';
-
-import { getPostFilters } from '../../services/postService';
-
-import NewPostForm from './NewPostForm/NewPostForm';
-import NewPostFilter from './NewPostFilter/NewPostFilter';
-import MobileHeader from '../Header/MobileHeader/MobileHeader';
-import TextButton from '../Button/TextButton/TextButton';
-import Icon from '../Icon/Icon';
+import React, { useState, useEffect } from "react";
+import { getPostFilters } from "../../services/postService";
+import NewPostForm from "./NewPostForm/NewPostForm";
+import NewPostFilter from "./NewPostFilter/NewPostFilter";
+import MobileHeader from "../Header/MobileHeader/MobileHeader";
+import TextButton from "../Button/TextButton/TextButton";
+import Icon from "../Icon/Icon";
 
 const NewPost = ({ file, hide }) => {
   const [previewImage, setPreviewImage] = useState({
     src: null,
     crop: {},
     filter: null,
-    filterName: '',
+    filterName: "",
   });
-  const [activeSection, setActiveSection] = useState('filter');
+  const [activeSection, setActiveSection] = useState("filter");
   const [filters, setFilters] = useState([]);
 
   // Load a preview image of the image to post
   useEffect(() => {
-    if (file.type === 'image/png' || file.type === 'image/jpeg') {
+    if (file.type === "image/png" || file.type === "image/jpeg") {
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = (event) => {
@@ -52,12 +50,12 @@ const NewPost = ({ file, hide }) => {
 
   const renderSections = () => {
     switch (activeSection) {
-      case 'details': {
+      case "details": {
         return (
           <NewPostForm
             file={file}
             previewImage={previewImage}
-            back={() => setActiveSection('filter')}
+            back={() => setActiveSection("filter")}
             hide={() => hide()}
           />
         );
@@ -83,34 +81,34 @@ const NewPost = ({ file, hide }) => {
 
   return (
     <section className="new-post">
-      {activeSection !== 'details' && (
+      {activeSection !== "details" && (
         <MobileHeader show>
           <Icon
             icon="close-outline"
             onClick={() => hide()}
-            style={{ cursor: 'pointer' }}
+            style={{ cursor: "pointer" }}
           />
           <h3 className="heading-3">New Post</h3>
           <TextButton
             bold
             blue
-            style={{ fontSize: '1.5rem' }}
-            onClick={() => setActiveSection('details')}
+            style={{ fontSize: "1.5rem" }}
+            onClick={() => setActiveSection("details")}
           >
             Next
           </TextButton>
         </MobileHeader>
       )}
       {renderSections()}
-      {activeSection !== 'details' && (
+      {activeSection !== "details" && (
         <nav className="new-post__nav">
           <ul>
             <li
               className={`new-post__nav-item ${
-                activeSection === 'filter' && 'new-post__nav-item--active'
+                activeSection === "filter" && "new-post__nav-item--active"
               }`}
-              onClick={() => setActiveSection('filter')}
-              style={{ width: '100%' }}
+              onClick={() => setActiveSection("filter")}
+              style={{ width: "100%" }}
             >
               <h4 className="heading-4">Filter</h4>
             </li>

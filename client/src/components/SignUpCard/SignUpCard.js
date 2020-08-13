@@ -3,17 +3,14 @@ import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { Link } from "react-router-dom";
 import { useFormik } from "formik";
-
 import { signUpStart } from "../../redux/user/userActions";
 import { selectError, selectFetching } from "../../redux/user/userSelectors";
-
 import {
   validateEmail,
   validateFullName,
   validateUsername,
   validatePassword,
 } from "../../utils/validation";
-
 import Button from "../Button/Button";
 import TextButton from "../Button/TextButton/TextButton";
 import Card from "../Card/Card";

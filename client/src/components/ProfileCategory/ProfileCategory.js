@@ -1,8 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-
-import Icon from '../Icon/Icon';
-
+import React from "react";
+import PropTypes from "prop-types";
+import Icon from "../Icon/Icon";
 const ProfileCategory = ({ category, icon }) => (
   <div className="profile-categories">
     <div className="profile-categories__category">

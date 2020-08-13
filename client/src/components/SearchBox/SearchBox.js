@@ -1,16 +1,14 @@
-import React, { Fragment, useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
-
-import useSearchUsersDebounced from '../../hooks/useSearchUsersDebounced';
-
-import Icon from '../Icon/Icon';
-import PopupCard from '../PopupCard/PopupCard';
-import UserCard from '../UserCard/UserCard';
-import Divider from '../Divider/Divider';
-import Loader from '../Loader/Loader';
+import React, { Fragment, useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import useSearchUsersDebounced from "../../hooks/useSearchUsersDebounced";
+import Icon from "../Icon/Icon";
+import PopupCard from "../PopupCard/PopupCard";
+import UserCard from "../UserCard/UserCard";
+import Divider from "../Divider/Divider";
+import Loader from "../Loader/Loader";
 
 const SearchBox = ({ style, setResult, onClick }) => {
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
   const {
     handleSearchDebouncedRef,
     result,
@@ -49,10 +47,10 @@ const SearchBox = ({ style, setResult, onClick }) => {
         </span>
       </form>
       {query && !fetching && !setResult && (
-        <PopupCard hide={() => setQuery('')}>
+        <PopupCard hide={() => setQuery("")}>
           {result.length === 0 && !fetching ? (
             <h3
-              style={{ padding: '1rem 0' }}
+              style={{ padding: "1rem 0" }}
               className="heading-3 color-grey font-medium text-center"
             >
               No results found.
@@ -65,10 +63,10 @@ const SearchBox = ({ style, setResult, onClick }) => {
                   avatar={user.avatar}
                   username={user.username}
                   subText={user.fullName}
-                  style={{ padding: '1.5rem 1.5rem' }}
+                  style={{ padding: "1.5rem 1.5rem" }}
                   onClick={() => {
                     history.push(`/${user.username}`);
-                    setQuery('');
+                    setQuery("");
                   }}
                 />
                 {result.length !== idx + 1 && <Divider />}

@@ -1,5 +1,4 @@
 import userTypes from "./userTypes";
-
 import { disconnectSocket } from "../socket/socketActions";
 import { bookmarkPost as bookmark } from "../../services/postService";
 import { registerUser, login } from "../../services/authenticationServices";

@@ -1,18 +1,17 @@
-import React, { useState } from 'react';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
-
+import React, { useState } from "react";
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
 import {
   selectCurrentUser,
   selectToken,
-} from '../../../redux/user/userSelectors';
-import { showModal } from '../../../redux/modal/modalActions';
-import { showAlert } from '../../../redux/alert/alertActions';
+} from "../../../redux/user/userSelectors";
+import { showModal } from "../../../redux/modal/modalActions";
+import { showAlert } from "../../../redux/alert/alertActions";
 
-import { followUser } from '../../../services/profileService';
+import { followUser } from "../../../services/profileService";
 
-import Button from '../Button';
-import UnfollowPrompt from '../../UnfollowPrompt/UnfollowPrompt';
+import Button from "../Button";
+import UnfollowPrompt from "../../UnfollowPrompt/UnfollowPrompt";
 
 const FollowButton = ({
   userId,
@@ -40,7 +39,7 @@ const FollowButton = ({
       setLoading(false);
     } catch (err) {
       setLoading(false);
-      showAlert('Could not follow the user.', () => follow());
+      showAlert("Could not follow the user.", () => follow());
     }
   };
 
@@ -59,13 +58,13 @@ const FollowButton = ({
               options: [
                 {
                   warning: true,
-                  text: 'Unfollow',
+                  text: "Unfollow",
                   onClick: () => follow(),
                 },
               ],
               children: <UnfollowPrompt avatar={avatar} username={username} />,
             },
-            'OptionsDialog/OptionsDialog'
+            "OptionsDialog/OptionsDialog"
           )
         }
         inverted

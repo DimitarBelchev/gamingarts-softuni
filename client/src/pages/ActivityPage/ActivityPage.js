@@ -1,8 +1,6 @@
 import React, { Fragment, useEffect } from "react";
-
 import MobileHeader from "../../components/Header/MobileHeader/MobileHeader";
 import NotificationFeed from "../../components/Notification/NotificationFeed/NotificationFeed";
-
 const ActivityPage = () => {
   useEffect(() => {
     document.title = "GamingArts";

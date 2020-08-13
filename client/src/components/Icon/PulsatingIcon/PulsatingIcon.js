@@ -1,26 +1,25 @@
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
-import { useTransition } from 'react-spring';
-
-import Icon from '../Icon';
+import React, { Fragment } from "react";
+import PropTypes from "prop-types";
+import { useTransition } from "react-spring";
+import Icon from "../Icon";
 
 const PulsatingIcon = ({
   toggle,
   constantProps = {},
   toggledProps,
-  elementRef
+  elementRef,
 }) => {
   const transitions = useTransition(toggle, null, {
-    from: { transform: 'scale(1.3)' },
-    enter: { transform: 'scale(1)' },
-    leave: { display: 'none' },
+    from: { transform: "scale(1.3)" },
+    enter: { transform: "scale(1)" },
+    leave: { display: "none" },
     config: {
       mass: 1,
       tension: 500,
-      friction: 20
+      friction: 20,
     },
     // Prevent animating on initial render
-    immediate: !elementRef.current
+    immediate: !elementRef.current,
   });
 
   return (
@@ -51,7 +50,7 @@ PulsatingIcon.propTypes = {
   constantProps: PropTypes.object,
   toggledProps: PropTypes.arrayOf(PropTypes.object).isRequired,
   elementRef: PropTypes.shape({ current: PropTypes.instanceOf(Element) })
-    .isRequired
+    .isRequired,
 };
 
 export default PulsatingIcon;

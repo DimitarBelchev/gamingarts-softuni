@@ -2,7 +2,6 @@ import React, { useEffect, Fragment } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { Link } from "react-router-dom";
-
 import {
   selectNotifications,
   selectNotificationState,

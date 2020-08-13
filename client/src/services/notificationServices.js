@@ -1,5 +1,4 @@
-import axios from 'axios';
-
+import axios from "axios";
 /**
  * Retrieves a users notifications
  * @function retrieveNotifications
@@ -8,7 +7,7 @@ import axios from 'axios';
  */
 export const retrieveNotifications = async (authToken) => {
   try {
-    const response = await axios.get('/api/notification', {
+    const response = await axios.get("/api/notification", {
       headers: {
         authorization: authToken,
       },
@@ -26,7 +25,7 @@ export const retrieveNotifications = async (authToken) => {
  */
 export const readNotifications = async (authToken) => {
   try {
-    await axios.put('/api/notification', null, {
+    await axios.put("/api/notification", null, {
       headers: {
         authorization: authToken,
       },

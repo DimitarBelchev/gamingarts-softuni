@@ -7,16 +7,15 @@ export const INITIAL_STATE = {
     posts: [],
   },
 };
-
 export const profileReducer = (state, action) => {
   switch (action.type) {
-    case 'FETCH_PROFILE_START': {
+    case "FETCH_PROFILE_START": {
       return { ...state, fetching: true, error: false };
     }
-    case 'FETCH_PROFILE_FAILURE': {
+    case "FETCH_PROFILE_FAILURE": {
       return { ...state, fetching: false, error: action.payload };
     }
-    case 'FETCH_PROFILE_SUCCESS': {
+    case "FETCH_PROFILE_SUCCESS": {
       return {
         ...state,
         fetching: false,
@@ -28,20 +27,20 @@ export const profileReducer = (state, action) => {
         },
       };
     }
-    case 'FETCH_ADDITIONAL_POSTS_START': {
+    case "FETCH_ADDITIONAL_POSTS_START": {
       return { ...state, fetchingAdditionalPosts: true };
     }
-    case 'FETCH_ADDITIONAL_POSTS_FAILURE': {
+    case "FETCH_ADDITIONAL_POSTS_FAILURE": {
       return {
         ...state,
         fetchingAdditionalPosts: false,
         error: action.payload,
       };
     }
-    case 'FETCH_ADDITIONAL_POSTS_SUCCESS': {
+    case "FETCH_ADDITIONAL_POSTS_SUCCESS": {
       return { ...state, fetchingAdditionalPosts: false, error: false };
     }
-    case 'SET_POST_VOTES_COUNT': {
+    case "SET_POST_VOTES_COUNT": {
       const { postId, votes } = action.payload;
       const posts = JSON.parse(JSON.stringify(state.data.posts));
       const postIndex = posts.findIndex((post) => post._id === postId);
@@ -55,7 +54,7 @@ export const profileReducer = (state, action) => {
         },
       };
     }
-    case 'INCREMENT_POST_COMMENTS_COUNT': {
+    case "INCREMENT_POST_COMMENTS_COUNT": {
       const postId = action.payload;
       const posts = JSON.parse(JSON.stringify(state.data.posts));
       const postIndex = posts.findIndex((post) => post._id === postId);
@@ -69,7 +68,7 @@ export const profileReducer = (state, action) => {
         },
       };
     }
-    case 'DECREMENT_POST_COMMENTS_COUNT': {
+    case "DECREMENT_POST_COMMENTS_COUNT": {
       const { decrementCount, postId } = action.payload;
       const posts = JSON.parse(JSON.stringify(state.data.posts));
       const postIndex = posts.findIndex((post) => post._id === postId);
@@ -83,7 +82,7 @@ export const profileReducer = (state, action) => {
         },
       };
     }
-    case 'ADD_POSTS': {
+    case "ADD_POSTS": {
       const posts = action.payload;
       return {
         ...state,
@@ -93,7 +92,7 @@ export const profileReducer = (state, action) => {
         },
       };
     }
-    case 'DELETE_POST': {
+    case "DELETE_POST": {
       return {
         ...state,
         data: {
@@ -103,14 +102,14 @@ export const profileReducer = (state, action) => {
         },
       };
     }
-    case 'FOLLOW_USER_START': {
+    case "FOLLOW_USER_START": {
       return { ...state, following: true };
     }
-    case 'FOLLOW_USER_FAILURE': {
+    case "FOLLOW_USER_FAILURE": {
       return { ...state, following: false, error: action.payload };
     }
-    case 'FOLLOW_USER_SUCCESS': {
-      if (action.payload === 'follow') {
+    case "FOLLOW_USER_SUCCESS": {
+      if (action.payload === "follow") {
         return {
           ...state,
           following: false,

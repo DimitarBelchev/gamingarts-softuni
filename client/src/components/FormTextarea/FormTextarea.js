@@ -1,5 +1,4 @@
-import React from 'react';
-
+import React from "react";
 const FormTextarea = ({ children, fieldProps, ...additionalProps }) => (
   <textarea
     className="form-group__textarea"

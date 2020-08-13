@@ -1,23 +1,22 @@
-import React, { useState, Fragment, useRef } from 'react';
-import ReactCrop from 'react-image-crop';
-import 'react-image-crop/dist/ReactCrop.css';
-
-import Icon from '../../Icon/Icon';
+import React, { useState, Fragment, useRef } from "react";
+import ReactCrop from "react-image-crop";
+import "react-image-crop/dist/ReactCrop.css";
+import Icon from "../../Icon/Icon";
 
 const NewPostEdit = ({ previewImage, setPreviewImage, file }) => {
   const [imageState, setImageState] = useState({
-    crop: { unit: '%', aspect: 16 / 9 },
+    crop: { unit: "%", aspect: 16 / 9 },
     isCropping: false,
   });
   const imageRef = useRef();
 
   const getCroppedImg = (image, crop) => {
-    const canvas = document.createElement('canvas');
+    const canvas = document.createElement("canvas");
     const scaleX = image.naturalWidth / image.width;
     const scaleY = image.naturalHeight / image.height;
     canvas.width = crop.width;
     canvas.height = crop.height;
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext("2d");
 
     ctx.drawImage(
       image,
@@ -35,13 +34,13 @@ const NewPostEdit = ({ previewImage, setPreviewImage, file }) => {
       canvas.toBlob((blob) => {
         if (!blob) {
           //reject(new Error('Canvas is empty'));
-          console.error('Canvas is empty');
+          console.error("Canvas is empty");
           return;
         }
-        blob.name = 'cropped.jpeg';
+        blob.name = "cropped.jpeg";
         const fileUrl = window.URL.createObjectURL(blob);
         resolve(fileUrl);
-      }, 'image/jpeg');
+      }, "image/jpeg");
     });
   };
 
@@ -51,7 +50,7 @@ const NewPostEdit = ({ previewImage, setPreviewImage, file }) => {
       const croppedImageUrl = await getCroppedImg(
         imageState.imageRef,
         crop,
-        'newFile.jpeg'
+        "newFile.jpeg"
       );
       setPreviewImage({ src: croppedImageUrl, crop });
       setImageState((previous) => ({ ...previous, isCropping: false }));
@@ -83,12 +82,12 @@ const NewPostEdit = ({ previewImage, setPreviewImage, file }) => {
             onChange={onCropChange}
             onImageLoaded={onImageLoaded}
             onDragStart={onDragStart}
-            style={{ width: '100%', height: '100%' }}
+            style={{ width: "100%", height: "100%" }}
             ref={imageRef}
             imageStyle={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'contain',
+              width: "100%",
+              height: "100%",
+              objectFit: "contain",
               filter: previewImage.filter,
             }}
             ruleOfThirds
@@ -96,7 +95,7 @@ const NewPostEdit = ({ previewImage, setPreviewImage, file }) => {
           <Icon
             icon="checkmark-outline"
             className="new-post__crop-button"
-            style={imageState.isCropping ? { display: 'inline-block' } : {}}
+            style={imageState.isCropping ? { display: "inline-block" } : {}}
             onClick={() => makeClientCrop(imageState.crop)}
           />
         </div>

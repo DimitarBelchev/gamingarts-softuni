@@ -1,9 +1,8 @@
-import notificationTypes from './notificationTypes';
-
+import notificationTypes from "./notificationTypes";
 import {
   retrieveNotifications,
   readNotifications,
-} from '../../services/notificationServices';
+} from "../../services/notificationServices";
 
 export const addNotification = (notification) => ({
   type: notificationTypes.ADD_NOTIFICATION,

@@ -1,7 +1,5 @@
-import React, { Fragment } from 'react';
-
-import SkeletonLoader from '../../SkeletonLoader/SkeletonLoader';
-
+import React, { Fragment } from "react";
+import SkeletonLoader from "../../SkeletonLoader/SkeletonLoader";
 const UsersListSkeleton = ({ amount = 3, style }) => {
   const renderSkeleton = () => {
     const skeleton = [];
@@ -10,35 +8,35 @@ const UsersListSkeleton = ({ amount = 3, style }) => {
         <div
           key={i}
           style={{
-            display: 'flex',
-            alignItems: 'center',
-            padding: '0.5rem 1.5rem',
+            display: "flex",
+            alignItems: "center",
+            padding: "0.5rem 1.5rem",
             ...style,
           }}
         >
           <SkeletonLoader
             style={{
-              width: '40px',
-              height: '40px',
-              borderRadius: '100px',
+              width: "40px",
+              height: "40px",
+              borderRadius: "100px",
             }}
           />
           <div
             style={{
-              display: 'flex',
-              flexDirection: 'column',
+              display: "flex",
+              flexDirection: "column",
             }}
           >
             <SkeletonLoader
               style={{
-                width: '10rem',
-                height: '1rem',
-                marginLeft: '1rem',
-                marginBottom: '5px',
+                width: "10rem",
+                height: "1rem",
+                marginLeft: "1rem",
+                marginBottom: "5px",
               }}
             />
             <SkeletonLoader
-              style={{ width: '15rem', height: '1rem', marginLeft: '1rem' }}
+              style={{ width: "15rem", height: "1rem", marginLeft: "1rem" }}
             />
           </div>
         </div>

@@ -1,11 +1,9 @@
-import React from 'react';
-import { shallow } from 'enzyme';
+import React from "react";
+import { shallow } from "enzyme";
+import LoginPage from "./LoginPage";
+import { findByTestAttribute, storeFactory } from "../../utils/test/testUtils";
 
-import LoginPage from './LoginPage';
-
-import { findByTestAttribute, storeFactory } from '../../utils/test/testUtils';
-
-jest.mock('react-router-dom', () => ({
+jest.mock("react-router-dom", () => ({
   useHistory: () => ({
     push: jest.fn(),
   }),
@@ -24,10 +22,10 @@ export const setup = (initialState = {}) => {
   return wrapper;
 };
 
-describe('render', () => {
-  test('renders without error', () => {
+describe("render", () => {
+  test("renders without error", () => {
     const wrapper = setup();
-    const component = findByTestAttribute(wrapper, 'page-login');
+    const component = findByTestAttribute(wrapper, "page-login");
     expect(component.exists()).toBeTruthy();
   });
 });

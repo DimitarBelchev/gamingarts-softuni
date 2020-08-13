@@ -1,5 +1,4 @@
-import alertTypes from './alertTypes';
-
+import alertTypes from "./alertTypes";
 export const hideAlert = () => ({
   type: alertTypes.HIDE_ALERT,
 });

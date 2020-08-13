@@ -1,12 +1,11 @@
-import React, { useRef, useState, Fragment } from 'react';
-import classNames from 'classnames';
-
-import Loader from '../Loader/Loader';
-import SkeletonLoader from '../SkeletonLoader/SkeletonLoader';
+import React, { useRef, useState, Fragment } from "react";
+import classNames from "classnames";
+import Loader from "../Loader/Loader";
+import SkeletonLoader from "../SkeletonLoader/SkeletonLoader";
 
 const FilterSelector = ({ setFilter, filters, previewImage }) => {
   const filterSelectorRef = useRef();
-  const [selectedFilter, setSelectedFilter] = useState('Normal');
+  const [selectedFilter, setSelectedFilter] = useState("Normal");
 
   const handleClick = (name, filter) => {
     setSelectedFilter(name);
@@ -19,7 +18,7 @@ const FilterSelector = ({ setFilter, filters, previewImage }) => {
       skeleton.push(
         <li
           className="filter-selector__item"
-          style={{ width: '12rem', height: '8rem' }}
+          style={{ width: "12rem", height: "8rem" }}
           key={i}
         >
           <SkeletonLoader animated />
@@ -37,11 +36,11 @@ const FilterSelector = ({ setFilter, filters, previewImage }) => {
         <Fragment>
           <li
             className={classNames({
-              'filter-selector__item': true,
-              'filter-selector__item--active font-bold':
-                selectedFilter === 'Normal',
+              "filter-selector__item": true,
+              "filter-selector__item--active font-bold":
+                selectedFilter === "Normal",
             })}
-            onClick={() => handleClick('Normal', '')}
+            onClick={() => handleClick("Normal", "")}
           >
             <span className="filter-selector__filter-name heading-5">
               Normal
@@ -51,8 +50,8 @@ const FilterSelector = ({ setFilter, filters, previewImage }) => {
           {filters.map(({ name, filter }, idx) => (
             <li
               className={classNames({
-                'filter-selector__item': true,
-                'filter-selector__item--active font-bold':
+                "filter-selector__item": true,
+                "filter-selector__item--active font-bold":
                   selectedFilter === name,
               })}
               onClick={() => handleClick(name, filter)}

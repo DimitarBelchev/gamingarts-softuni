@@ -1,5 +1,4 @@
 import axios from "axios";
-
 /**
  * Logs a user in with the provided credentials
  * @function login

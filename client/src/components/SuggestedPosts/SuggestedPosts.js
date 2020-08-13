@@ -1,16 +1,14 @@
-import React, { Fragment, useState, useEffect, useRef } from 'react';
-import { useHistory } from 'react-router-dom';
-
-import useScrollPositionThrottled from '../../hooks/useScrollPositionThrottled';
-import { getSuggestedPosts } from '../../services/postService';
-
-import MobileHeader from '../../components/Header/MobileHeader/MobileHeader';
-import SearchBox from '../../components/SearchBox/SearchBox';
-import TextButton from '../../components/Button/TextButton/TextButton';
-import UserCard from '../../components/UserCard/UserCard';
-import PreviewImage from '../../components/PreviewImage/PreviewImage';
-import SkeletonLoader from '../../components/SkeletonLoader/SkeletonLoader';
-import ImageGrid from '../../components/ImageGrid/ImageGrid';
+import React, { Fragment, useState, useEffect, useRef } from "react";
+import { useHistory } from "react-router-dom";
+import useScrollPositionThrottled from "../../hooks/useScrollPositionThrottled";
+import { getSuggestedPosts } from "../../services/postService";
+import MobileHeader from "../../components/Header/MobileHeader/MobileHeader";
+import SearchBox from "../../components/SearchBox/SearchBox";
+import TextButton from "../../components/Button/TextButton/TextButton";
+import UserCard from "../../components/UserCard/UserCard";
+import PreviewImage from "../../components/PreviewImage/PreviewImage";
+import SkeletonLoader from "../../components/SkeletonLoader/SkeletonLoader";
+import ImageGrid from "../../components/ImageGrid/ImageGrid";
 
 const SuggestedPosts = ({ token, showModal, showAlert }) => {
   const history = useHistory();
@@ -31,7 +29,7 @@ const SuggestedPosts = ({ token, showModal, showAlert }) => {
           postId,
           avatar,
         },
-        'PostDialog/PostDialog'
+        "PostDialog/PostDialog"
       );
     }
   };
@@ -70,7 +68,7 @@ const SuggestedPosts = ({ token, showModal, showAlert }) => {
     const skeleton = [];
     for (let i = 0; i < amount; i++) {
       skeleton.push(
-        <SkeletonLoader key={i} style={{ minHeight: '30rem' }} animated />
+        <SkeletonLoader key={i} style={{ minHeight: "30rem" }} animated />
       );
     }
     return skeleton;
@@ -81,13 +79,13 @@ const SuggestedPosts = ({ token, showModal, showAlert }) => {
       <MobileHeader
         style={
           search && {
-            gridTemplateColumns: 'repeat(2, 1fr) min-content',
-            gridColumnGap: '2rem',
+            gridTemplateColumns: "repeat(2, 1fr) min-content",
+            gridColumnGap: "2rem",
           }
         }
       >
         <SearchBox
-          style={{ gridColumn: `${search ? '1 / span 2' : '1 / -1'}` }}
+          style={{ gridColumn: `${search ? "1 / span 2" : "1 / -1"}` }}
           setResult={setResult}
           onClick={() => setSearch(true)}
         />

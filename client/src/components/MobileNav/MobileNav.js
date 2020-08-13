@@ -1,9 +1,8 @@
-import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
-
-import Icon from '../Icon/Icon';
-import NotificationButton from '../Notification/NotificationButton/NotificationButton';
-import NewPostButton from '../NewPost/NewPostButton/NewPostButton';
+import React from "react";
+import { Link, useHistory } from "react-router-dom";
+import Icon from "../Icon/Icon";
+import NotificationButton from "../Notification/NotificationButton/NotificationButton";
+import NewPostButton from "../NewPost/NewPostButton/NewPostButton";
 
 const MobileNav = ({ currentUser }) => {
   const {
@@ -15,13 +14,13 @@ const MobileNav = ({ currentUser }) => {
       <ul className="mobile-nav__list">
         <li>
           <Link to="/">
-            <Icon icon={pathname === '/' ? 'home' : 'home-outline'} />
+            <Icon icon={pathname === "/" ? "home" : "home-outline"} />
           </Link>
         </li>
         <li>
           <Link to="/explore">
             <Icon
-              icon={pathname === '/explore' ? 'search' : 'search-outline'}
+              icon={pathname === "/explore" ? "search" : "search-outline"}
             />
           </Link>
         </li>
@@ -32,7 +31,7 @@ const MobileNav = ({ currentUser }) => {
           <Link to="/activity">
             <NotificationButton
               mobile
-              icon={pathname === '/activity' ? 'heart' : 'heart-outline'}
+              icon={pathname === "/activity" ? "heart" : "heart-outline"}
             />
           </Link>
         </li>
@@ -41,8 +40,8 @@ const MobileNav = ({ currentUser }) => {
             <Icon
               icon={
                 pathname === `/${currentUser.username}`
-                  ? 'person-circle'
-                  : 'person-circle-outline'
+                  ? "person-circle"
+                  : "person-circle-outline"
               }
             />
           </Link>

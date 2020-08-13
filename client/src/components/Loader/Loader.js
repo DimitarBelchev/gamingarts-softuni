@@ -1,6 +1,5 @@
-import React from 'react';
-
-import { ReactComponent as LoaderSvg } from '../../assets/svg/loader.svg';
+import React from "react";
+import { ReactComponent as LoaderSvg } from "../../assets/svg/loader.svg";
 
 const Loader = () => (
   <div className="loader">

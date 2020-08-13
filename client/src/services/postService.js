@@ -1,5 +1,4 @@
-import axios from 'axios';
-
+import axios from "axios";
 /**
  * Fetches a complete post with comments and the fully
  * sized image instead of a thumbnail image
@@ -55,10 +54,10 @@ export const votePost = async (postId, authToken) => {
  */
 export const createPost = async (formData, authToken) => {
   try {
-    const post = await axios.post('/api/post', formData, {
+    const post = await axios.post("/api/post", formData, {
       headers: {
         authorization: authToken,
-        'Content-Type': 'multipart/form-data',
+        "Content-Type": "multipart/form-data",
       },
     });
     return post.data;
@@ -109,7 +108,7 @@ export const bookmarkPost = async (postId, authToken) => {
  */
 export const getPostFilters = async () => {
   try {
-    const response = await axios.get('/api/post/filters');
+    const response = await axios.get("/api/post/filters");
     return response.data;
   } catch (err) {
     throw new Error(err.response.data.error);
@@ -125,7 +124,7 @@ export const getPostFilters = async () => {
  */
 export const getSuggestedPosts = async (authToken, offset = 0) => {
   try {
-    const response = await axios.get('/api/post/suggested/' + offset, {
+    const response = await axios.get("/api/post/suggested/" + offset, {
       headers: {
         authorization: authToken,
       },

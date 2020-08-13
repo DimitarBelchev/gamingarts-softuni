@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-
 import { selectCurrentUser, selectToken } from "../../redux/user/userSelectors";
 import { showAlert } from "../../redux/alert/alertActions";
-
 import { validatePassword } from "../../utils/validation";
-
 import { changePassword } from "../../services/authenticationServices";
-
 import Avatar from "../Avatar/Avatar";
 import FormInput from "../FormInput/FormInput";
 import Button from "../Button/Button";

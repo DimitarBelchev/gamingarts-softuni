@@ -1,8 +1,6 @@
-import { useState, useRef } from 'react';
-import debounce from 'lodash/debounce';
-
-import { searchUsers } from '../services/userService';
-
+import { useState, useRef } from "react";
+import debounce from "lodash/debounce";
+import { searchUsers } from "../services/userService";
 /**
  * A memoized debounced hook to search for users with a given offset
  * @function useSearchUsersDebounced

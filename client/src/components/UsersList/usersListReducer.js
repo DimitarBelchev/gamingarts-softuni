@@ -4,13 +4,12 @@ export const INITIAL_STATE = {
   error: false,
   data: null,
 };
-
 export const usersListReducer = (state, action) => {
   switch (action.type) {
-    case 'FETCH_START': {
+    case "FETCH_START": {
       return { ...state, fetching: true, error: false };
     }
-    case 'FETCH_ADDITIONAL_START': {
+    case "FETCH_ADDITIONAL_START": {
       return {
         ...state,
         fetching: false,
@@ -18,7 +17,7 @@ export const usersListReducer = (state, action) => {
         fetchingAdditional: true,
       };
     }
-    case 'FETCH_FAILURE': {
+    case "FETCH_FAILURE": {
       return {
         ...state,
         fetching: false,
@@ -26,7 +25,7 @@ export const usersListReducer = (state, action) => {
         error: action.payload,
       };
     }
-    case 'FETCH_SUCCESS': {
+    case "FETCH_SUCCESS": {
       return {
         ...state,
         fetching: false,
@@ -35,7 +34,7 @@ export const usersListReducer = (state, action) => {
         data: action.payload,
       };
     }
-    case 'ADD_USERS': {
+    case "ADD_USERS": {
       return {
         ...state,
         fetchingAdditional: false,

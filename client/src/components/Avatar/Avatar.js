@@ -1,9 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-
+import React from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
 const Avatar = ({
-  imageSrc = require('../../assets/img/default-avatar.png'),
+  imageSrc = require("../../assets/img/default-avatar.png"),
   className,
   onClick,
   style,

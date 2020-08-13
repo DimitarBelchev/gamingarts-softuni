@@ -1,15 +1,13 @@
-import React, { Fragment } from 'react';
-import { useHistory } from 'react-router-dom';
-
-import Avatar from '../../Avatar/Avatar';
-
+import React, { Fragment } from "react";
+import { useHistory } from "react-router-dom";
+import Avatar from "../../Avatar/Avatar";
 const SuggestionCard = ({ avatar, username, fullName, posts, children }) => {
   const history = useHistory();
 
   return (
     <div className="suggestion-card">
       <Avatar
-        onClick={() => history.push('/' + username)}
+        onClick={() => history.push("/" + username)}
         className="avatar--large mb-sm"
         imageSrc={avatar}
       />
@@ -28,7 +26,7 @@ const SuggestionCard = ({ avatar, username, fullName, posts, children }) => {
           ))
         ) : (
           <Fragment>
-            <div style={{ padding: '2rem' }}>
+            <div style={{ padding: "2rem" }}>
               <h3 className="heading-4 font-bold">No Posts</h3>
               <h4 className="heading-5 font-medium color-grey">
                 This user has no posts yet, follow them to see their future

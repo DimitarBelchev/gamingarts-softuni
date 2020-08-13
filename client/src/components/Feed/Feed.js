@@ -1,14 +1,13 @@
-import React, { Fragment } from 'react';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
-
+import React, { Fragment } from "react";
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
 import {
   selectFeedPosts,
   selectFeedFetching,
-} from '../../redux/feed/feedSelectors';
+} from "../../redux/feed/feedSelectors";
 
-import PostDialog from '../PostDialog/PostDialog';
-import FeedBottom from './FeedBottom/FeedBottom';
+import PostDialog from "../PostDialog/PostDialog";
+import FeedBottom from "./FeedBottom/FeedBottom";
 
 const Feed = ({ feedPosts, feedFetching }) => {
   return (

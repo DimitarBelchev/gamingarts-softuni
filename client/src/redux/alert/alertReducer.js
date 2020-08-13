@@ -1,7 +1,6 @@
-import alertTypes from './alertTypes';
-
+import alertTypes from "./alertTypes";
 const INITIAL_STATE = {
-  text: '',
+  text: "",
   onClick: null,
   showAlert: false,
   timeoutId: null,
@@ -19,7 +18,7 @@ const alertReducer = (state = INITIAL_STATE, action) => {
       };
     }
     case alertTypes.HIDE_ALERT: {
-      return { ...state, text: '', onClick: null, showAlert: false };
+      return { ...state, text: "", onClick: null, showAlert: false };
     }
     case alertTypes.SET_ALERT_TIMEOUT_ID: {
       return {

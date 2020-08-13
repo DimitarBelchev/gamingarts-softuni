@@ -1,5 +1,4 @@
-import { createSelector } from 'reselect';
-
+import { createSelector } from "reselect";
 const selectFeed = (state) => state.feed;
 
 export const selectFeedPosts = createSelector(

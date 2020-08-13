@@ -1,12 +1,9 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-
 import { showAlert } from "../../../redux/alert/alertActions";
 import { selectToken } from "../../../redux/user/userSelectors";
-
 import { getSuggestedUsers } from "../../../services/userService";
-
 import UserCard from "../../UserCard/UserCard";
 import UserListSkeleton from "../../UsersList/UsersListSkeleton/UsersListSkeleton";
 import Card from "../../Card/Card";

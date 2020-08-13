@@ -1,5 +1,4 @@
-import { createSelector } from 'reselect';
-
+import { createSelector } from "reselect";
 const selectNotificationsObject = (state) => state.notifications;
 
 export const selectNotifications = createSelector(

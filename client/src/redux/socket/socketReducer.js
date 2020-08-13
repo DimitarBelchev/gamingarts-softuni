@@ -1,5 +1,4 @@
-import socketTypes from './socketTypes';
-
+import socketTypes from "./socketTypes";
 const INTIAL_STATE = {
   socket: null,
 };

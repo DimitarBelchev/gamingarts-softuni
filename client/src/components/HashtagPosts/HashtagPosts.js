@@ -1,14 +1,12 @@
-import React, { Fragment, useState, useEffect, useRef } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
-
-import useScrollPositionThrottled from '../../hooks/useScrollPositionThrottled';
-import { getHashtagPosts } from '../../services/postService';
-
-import MobileHeader from '../../components/Header/MobileHeader/MobileHeader';
-import TextButton from '../../components/Button/TextButton/TextButton';
-import PreviewImage from '../../components/PreviewImage/PreviewImage';
-import SkeletonLoader from '../../components/SkeletonLoader/SkeletonLoader';
-import ImageGrid from '../../components/ImageGrid/ImageGrid';
+import React, { Fragment, useState, useEffect, useRef } from "react";
+import { useParams, useHistory } from "react-router-dom";
+import useScrollPositionThrottled from "../../hooks/useScrollPositionThrottled";
+import { getHashtagPosts } from "../../services/postService";
+import MobileHeader from "../../components/Header/MobileHeader/MobileHeader";
+import TextButton from "../../components/Button/TextButton/TextButton";
+import PreviewImage from "../../components/PreviewImage/PreviewImage";
+import SkeletonLoader from "../../components/SkeletonLoader/SkeletonLoader";
+import ImageGrid from "../../components/ImageGrid/ImageGrid";
 
 const HashtagPosts = ({ token, showModal, showAlert }) => {
   const [posts, setPosts] = useState({
@@ -30,7 +28,7 @@ const HashtagPosts = ({ token, showModal, showAlert }) => {
           postId,
           avatar,
         },
-        'PostDialog/PostDialog'
+        "PostDialog/PostDialog"
       );
     }
   };
@@ -58,7 +56,7 @@ const HashtagPosts = ({ token, showModal, showAlert }) => {
     const skeleton = [];
     for (let i = 0; i < amount; i++) {
       skeleton.push(
-        <SkeletonLoader key={i} style={{ minHeight: '30rem' }} animated />
+        <SkeletonLoader key={i} style={{ minHeight: "30rem" }} animated />
       );
     }
     return skeleton;
@@ -89,15 +87,15 @@ const HashtagPosts = ({ token, showModal, showAlert }) => {
   ) : (
     <Fragment>
       <MobileHeader backArrow>
-        <TextButton style={{ justifySelf: 'center' }} bold large>
+        <TextButton style={{ justifySelf: "center" }} bold large>
           #{hashtag}
         </TextButton>
       </MobileHeader>
       <div className="hashtag-posts__title">
         <h2 className="heading-2">#{hashtag}</h2>
         <h3 className="heading-3 font-medium">
-          <span className="font-bold">{posts.postCount}</span>{' '}
-          {posts.postCount === 1 ? 'post' : 'posts'}
+          <span className="font-bold">{posts.postCount}</span>{" "}
+          {posts.postCount === 1 ? "post" : "posts"}
         </h3>
       </div>
       <ImageGrid>

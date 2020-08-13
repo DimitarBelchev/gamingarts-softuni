@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { useTransition } from "react-spring";
-
 import {
   selectNotifications,
   selectNotificationState,

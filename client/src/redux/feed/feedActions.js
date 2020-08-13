@@ -1,6 +1,5 @@
-import feedTypes from './feedTypes';
-
-import { retrieveFeedPosts } from '../../services/feedServices';
+import feedTypes from "./feedTypes";
+import { retrieveFeedPosts } from "../../services/feedServices";
 
 export const fetchFeedPostsStart = (authToken, offset) => async (dispatch) => {
   try {

@@ -1,9 +1,7 @@
-import React from 'react';
-import { shallow } from 'enzyme';
-
-import { findByTestAttribute } from '../../utils/test/testUtils';
-
-import HomePage from './HomePage';
+import React from "react";
+import { shallow } from "enzyme";
+import { findByTestAttribute } from "../../utils/test/testUtils";
+import HomePage from "./HomePage";
 
 /**
  * Factory function that returns a wrapped component
@@ -15,10 +13,10 @@ export const setup = () => {
   return wrapper;
 };
 
-describe('render', () => {
-  test('renders without error', () => {
+describe("render", () => {
+  test("renders without error", () => {
     const wrapper = setup();
-    const component = findByTestAttribute(wrapper, 'page-home');
+    const component = findByTestAttribute(wrapper, "page-home");
     expect(component.exists()).toBeTruthy();
   });
 });

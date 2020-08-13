@@ -1,5 +1,4 @@
-import axios from 'axios';
-
+import axios from "axios";
 /**
  * Retrieves posts from user's feed
  * @function retrieveFeedPosts

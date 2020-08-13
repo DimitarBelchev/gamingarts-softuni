@@ -4,11 +4,8 @@ import { Link } from "react-router-dom";
 import Linkify from "linkifyjs/react";
 import * as linkify from "linkifyjs";
 import mention from "linkifyjs/plugins/mention";
-
 import { linkifyOptions } from "../../../utils/linkifyUtils";
-
 import Icon from "../../Icon/Icon";
-
 import {
   voteCommentReply,
   deleteCommentReply,

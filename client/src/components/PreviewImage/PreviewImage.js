@@ -1,8 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-
-import Icon from '../Icon/Icon';
-
+import React from "react";
+import PropTypes from "prop-types";
+import Icon from "../Icon/Icon";
 const PreviewImage = ({ onClick, image, likes, comments, filter }) => (
   <figure onClick={onClick} key={image} className="preview-image">
     <img src={image} alt="User post" style={{ filter }} />

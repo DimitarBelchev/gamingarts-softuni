@@ -1,7 +1,6 @@
-import React from 'react';
-import { animated } from 'react-spring';
-
-import Icon from '../../../Icon/Icon';
+import React from "react";
+import { animated } from "react-spring";
+import Icon from "../../../Icon/Icon";
 
 const NotificationPopup = ({ style, notifications }) => {
   let newFollowers = 0;
@@ -11,12 +10,12 @@ const NotificationPopup = ({ style, notifications }) => {
   notifications.forEach((notification) => {
     if (!notification.read) {
       switch (notification.notificationType) {
-        case 'follow': {
+        case "follow": {
           newFollowers += 1;
           break;
         }
-        case 'comment':
-        case 'mention': {
+        case "comment":
+        case "mention": {
           newComments += 1;
           break;
         }
@@ -36,9 +35,9 @@ const NotificationPopup = ({ style, notifications }) => {
 
   return (
     <animated.div className="notification-button__popup" style={style}>
-      {newFollowers > 0 && renderIcons('person', newFollowers)}
-      {newLikes > 0 && renderIcons('heart', newLikes)}
-      {newComments > 0 && renderIcons('chatbubble', newComments)}
+      {newFollowers > 0 && renderIcons("person", newFollowers)}
+      {newLikes > 0 && renderIcons("heart", newLikes)}
+      {newComments > 0 && renderIcons("chatbubble", newComments)}
     </animated.div>
   );
 };

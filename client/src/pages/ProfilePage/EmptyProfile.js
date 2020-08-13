@@ -1,9 +1,7 @@
 import React, { Fragment } from "react";
-
 import Icon from "../../components/Icon/Icon";
 import NewPostButton from "../../components/NewPost/NewPostButton/NewPostButton";
 import TextButton from "../../components/Button/TextButton/TextButton";
-
 const EmptyProfile = ({ currentUserProfile, username }) => (
   <div className="profile-empty">
     <Icon icon="camera-outline" className="icon--larger" />

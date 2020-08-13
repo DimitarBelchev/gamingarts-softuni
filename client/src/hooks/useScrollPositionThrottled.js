@@ -1,6 +1,5 @@
-import { useEffect, useRef } from 'react';
-import throttle from 'lodash/throttle';
-
+import { useEffect, useRef } from "react";
+import throttle from "lodash/throttle";
 /**
  * Gets the current scroll position
  * @function getCurrentScrollPosition
@@ -41,13 +40,13 @@ const useScrollPositionThrottled = (callback, element, deps = []) => {
     // Throttle the function to improve performance
     const handleScrollThrottled = throttle(handleScroll, 200);
     element
-      ? element.addEventListener('scroll', handleScrollThrottled)
-      : window.addEventListener('scroll', handleScrollThrottled);
+      ? element.addEventListener("scroll", handleScrollThrottled)
+      : window.addEventListener("scroll", handleScrollThrottled);
 
     return () => {
       element
-        ? element.removeEventListener('scroll', handleScrollThrottled)
-        : window.removeEventListener('scroll', handleScrollThrottled);
+        ? element.removeEventListener("scroll", handleScrollThrottled)
+        : window.removeEventListener("scroll", handleScrollThrottled);
     };
     //eslint-disable-next-line react-hooks/exhaustive-deps
   }, [...deps, element, currentElement, callback]);

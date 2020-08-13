@@ -1,7 +1,6 @@
 .profile-page {
   overflow-x: hidden;
 }
-
 .profile-header {
   grid-column: center-start / center-end;
   display: grid;
@@ -57,7 +56,7 @@
         padding: 1.5rem 0;
         position: relative;
         &::before {
-          content: '';
+          content: "";
           position: absolute;
           height: 1px;
           background-color: $color-grey-2;
@@ -155,7 +154,7 @@
   @include respond(tab-port) {
     transform: translateY(0);
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       height: 1px;
       background-color: $color-grey-2;

@@ -1,7 +1,6 @@
 import React, { useEffect, Fragment } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-
 import { selectCurrentUser, selectToken } from "../../redux/user/userSelectors";
 import {
   selectFeedPosts,

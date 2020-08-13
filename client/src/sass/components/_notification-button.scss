@@ -8,7 +8,6 @@
   outline: none;
   height: 100%;
   margin: 0;
-
   &__popup {
     @include horizontalAbsoluteCenter;
     display: flex;
@@ -37,7 +36,7 @@
 
     &:before {
       @include horizontalAbsoluteCenter;
-      content: '';
+      content: "";
       background-color: $color-red;
       width: 2.5rem;
       height: 1rem;
@@ -61,7 +60,7 @@
         position: absolute;
         left: 50%;
         transform: translateX(-50%) rotate(180deg);
-        content: '';
+        content: "";
         background-color: $color-red;
         width: 2.5rem;
         height: 1rem;

@@ -8,11 +8,8 @@ import Linkify from "linkifyjs/react";
 import * as linkify from "linkifyjs";
 import mention from "linkifyjs/plugins/mention";
 import hashtag from "linkifyjs/plugins/hashtag";
-
 import { linkifyOptions } from "../../utils/linkifyUtils";
-
 import Icon from "../Icon/Icon";
-
 import { showModal, hideModal } from "../../redux/modal/modalActions";
 import { showAlert } from "../../redux/alert/alertActions";
 

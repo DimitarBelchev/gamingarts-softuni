@@ -1,5 +1,4 @@
-import feedTypes from './feedTypes';
-
+import feedTypes from "./feedTypes";
 const INITIAL_STATE = {
   posts: [],
   fetching: true,

@@ -2,17 +2,12 @@ import React, { useReducer, useEffect, Fragment } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { useParams, useHistory } from "react-router-dom";
-
 import { selectCurrentUser, selectToken } from "../../redux/user/userSelectors";
-
 import { INITIAL_STATE, profileReducer } from "./ProfilePageReducer";
 import { showModal, hideModal } from "../../redux/modal/modalActions";
-
 import { getUserProfile, followUser } from "../../services/profileService";
 import { getPosts } from "../../services/postService";
-
 import useScrollPositionThrottled from "../../hooks/useScrollPositionThrottled";
-
 import ProfileCategory from "../../components/ProfileCategory/ProfileCategory";
 import PreviewImage from "../../components/PreviewImage/PreviewImage";
 import Loader from "../../components/Loader/Loader";

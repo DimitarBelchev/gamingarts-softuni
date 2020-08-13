@@ -12,7 +12,6 @@
       margin-right: 1.5rem;
     }
   }
-
   &--small {
     &__links > a {
       color: $color-grey-2;
@@ -20,7 +19,7 @@
       font-size: 1.2rem;
 
       &:not(:last-child)::after {
-        content: '\00B7';
+        content: "\00B7";
         margin: 0 3px;
       }
     }

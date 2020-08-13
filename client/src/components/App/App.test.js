@@ -1,8 +1,7 @@
-import React from 'react';
-import { shallow } from 'enzyme';
-import { UnconnectedApp } from './App';
-
-import { findByTestAttribute } from '../../utils/test/testUtils';
+import React from "react";
+import { shallow } from "enzyme";
+import { UnconnectedApp } from "./App";
+import { findByTestAttribute } from "../../utils/test/testUtils";
 
 /**
  * Factory function that returns a wrapped component
@@ -14,10 +13,10 @@ export const setup = () => {
   return wrapper;
 };
 
-describe('render', () => {
-  test('renders without error', () => {
+describe("render", () => {
+  test("renders without error", () => {
     const wrapper = setup();
-    const component = findByTestAttribute(wrapper, 'component-app');
+    const component = findByTestAttribute(wrapper, "component-app");
     expect(component.exists()).toBeTruthy();
   });
 });

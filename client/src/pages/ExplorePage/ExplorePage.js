@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-
 import { selectToken } from "../../redux/user/userSelectors";
 import { showAlert } from "../../redux/alert/alertActions";
 import { showModal } from "../../redux/modal/modalActions";

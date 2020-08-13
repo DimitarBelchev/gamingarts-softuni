@@ -1,18 +1,17 @@
-import React, { useRef } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import classNames from 'classnames';
+import React, { useRef } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import classNames from "classnames";
+import { bookmarkPost } from "../../../redux/user/userActions";
+import { showAlert } from "../../../redux/alert/alertActions";
+import { showModal, hideModal } from "../../../redux/modal/modalActions";
 
-import { bookmarkPost } from '../../../redux/user/userActions';
-import { showAlert } from '../../../redux/alert/alertActions';
-import { showModal, hideModal } from '../../../redux/modal/modalActions';
+import { formatDate } from "../../../utils/timeUtils";
+import { votePost } from "../../../services/postService";
 
-import { formatDate } from '../../../utils/timeUtils';
-import { votePost } from '../../../services/postService';
-
-import Icon from '../../Icon/Icon';
-import PulsatingIcon from '../../Icon/PulsatingIcon/PulsatingIcon';
-import LoginCard from '../../LoginCard/LoginCard';
+import Icon from "../../Icon/Icon";
+import PulsatingIcon from "../../Icon/PulsatingIcon/PulsatingIcon";
+import LoginCard from "../../LoginCard/LoginCard";
 
 const PostDialogStats = ({
   currentUser,
@@ -32,31 +31,31 @@ const PostDialogStats = ({
     if (!currentUser) {
       return showModal(
         {
-          children: <LoginCard onClick={() => hideModal('Card/Card')} modal />,
+          children: <LoginCard onClick={() => hideModal("Card/Card")} modal />,
           style: {
-            gridColumn: 'center-start / center-end',
-            justifySelf: 'center',
-            width: '40rem',
+            gridColumn: "center-start / center-end",
+            justifySelf: "center",
+            width: "40rem",
           },
         },
-        'Card/Card'
+        "Card/Card"
       );
     }
     // Dispatch the action immediately to avoid a delay between the user's click and something happening
     dispatch({
-      type: 'VOTE_POST',
+      type: "VOTE_POST",
       payload: { currentUser, postId: post._id, dispatch: profileDispatch },
     });
     try {
       await votePost(post._id, token);
     } catch (err) {
-      showAlert('Could not vote on the post.', () => handleClick());
+      showAlert("Could not vote on the post.", () => handleClick());
     }
   };
 
   const postDialogStatsClassNames = classNames({
-    'post-dialog__stats': true,
-    'post-dialog__stats--simple': simple,
+    "post-dialog__stats": true,
+    "post-dialog__stats--simple": simple,
   });
 
   return (
@@ -77,12 +76,12 @@ const PostDialogStats = ({
             }}
             toggledProps={[
               {
-                className: 'icon--button post-dialog__like color-red',
-                icon: 'heart',
+                className: "icon--button post-dialog__like color-red",
+                icon: "heart",
               },
               {
-                className: 'icon--button post-dialog__like',
-                icon: 'heart-outline',
+                className: "icon--button post-dialog__like",
+                icon: "heart-outline",
               },
             ]}
           />
@@ -95,7 +94,7 @@ const PostDialogStats = ({
         )}
         <Icon
           onClick={() =>
-            currentUser && document.querySelector('.add-comment__input').focus()
+            currentUser && document.querySelector(".add-comment__input").focus()
           }
           className="icon--button"
           icon="chatbubble-outline"
@@ -109,18 +108,18 @@ const PostDialogStats = ({
               ? !!currentUser.bookmarks.find(
                   (bookmark) => bookmark.post === post._id
                 )
-                ? 'bookmark'
-                : 'bookmark-outline'
-              : 'bookmark-outline'
+                ? "bookmark"
+                : "bookmark-outline"
+              : "bookmark-outline"
           }
         />
       </div>
       <p className="heading-4">
         {post.postVotes.length === 0 ? (
           <span>
-            Be the first to{' '}
+            Be the first to{" "}
             <b
-              style={{ cursor: 'pointer' }}
+              style={{ cursor: "pointer" }}
               onClick={(event) => {
                 event.nativeEvent.stopImmediatePropagation();
                 handleClick();
@@ -133,8 +132,8 @@ const PostDialogStats = ({
         ) : (
           <span>
             <b>
-              {post.postVotes.length}{' '}
-              {post.postVotes.length === 1 ? 'like' : 'likes'}
+              {post.postVotes.length}{" "}
+              {post.postVotes.length === 1 ? "like" : "likes"}
             </b>
           </span>
         )}

@@ -1,6 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-
+import React from "react";
+import PropTypes from "prop-types";
 const SkeletonLoader = ({ style, animated }) => {
   return animated ? (
     <div style={style} className="skeleton-loader--animated"></div>

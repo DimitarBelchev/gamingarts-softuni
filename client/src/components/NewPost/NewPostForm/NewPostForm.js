@@ -1,22 +1,21 @@
-import React, { useState, Fragment } from 'react';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
-import { useHistory } from 'react-router-dom';
-
+import React, { useState, Fragment } from "react";
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
+import { useHistory } from "react-router-dom";
 import {
   selectToken,
   selectCurrentUser,
-} from '../../../redux/user/userSelectors';
-import { showAlert } from '../../../redux/alert/alertActions';
-import { addPost } from '../../../redux/feed/feedActions';
+} from "../../../redux/user/userSelectors";
+import { showAlert } from "../../../redux/alert/alertActions";
+import { addPost } from "../../../redux/feed/feedActions";
 
-import { createPost } from '../../../services/postService';
+import { createPost } from "../../../services/postService";
 
-import Avatar from '../../Avatar/Avatar';
-import MobileHeader from '../../Header/MobileHeader/MobileHeader';
-import Icon from '../../Icon/Icon';
-import TextButton from '../../Button/TextButton/TextButton';
-import Loader from '../../Loader/Loader';
+import Avatar from "../../Avatar/Avatar";
+import MobileHeader from "../../Header/MobileHeader/MobileHeader";
+import Icon from "../../Icon/Icon";
+import TextButton from "../../Button/TextButton/TextButton";
+import Loader from "../../Loader/Loader";
 
 const NewPostForm = ({
   token,
@@ -28,7 +27,7 @@ const NewPostForm = ({
   showAlert,
   addPost,
 }) => {
-  const [caption, setCaption] = useState('');
+  const [caption, setCaption] = useState("");
   const [loading, setLoading] = useState(false);
 
   const history = useHistory();
@@ -36,23 +35,23 @@ const NewPostForm = ({
   const handleClick = async (event) => {
     event.preventDefault();
     const formData = new FormData();
-    formData.append('image', file);
-    formData.set('caption', caption);
-    formData.set('crop', JSON.stringify(previewImage.crop));
-    previewImage.filterName && formData.set('filter', previewImage.filterName);
+    formData.append("image", file);
+    formData.set("caption", caption);
+    formData.set("crop", JSON.stringify(previewImage.crop));
+    previewImage.filterName && formData.set("filter", previewImage.filterName);
     try {
       setLoading(true);
       const post = await createPost(formData, token);
       setLoading(false);
       hide();
-      if (history.location.pathname === '/') {
+      if (history.location.pathname === "/") {
         addPost(post);
       } else {
-        history.push('/');
+        history.push("/");
       }
     } catch (err) {
       setLoading(false);
-      showAlert(err.message || 'Could not share post.', () =>
+      showAlert(err.message || "Could not share post.", () =>
         handleClick(event)
       );
     }
@@ -65,20 +64,20 @@ const NewPostForm = ({
         <Icon
           icon="chevron-back"
           onClick={() => back()}
-          style={{ cursor: 'pointer' }}
+          style={{ cursor: "pointer" }}
         />
         <h3 className="heading-3">New Post</h3>
         <TextButton
           bold
           blue
-          style={{ fontSize: '1.5rem' }}
+          style={{ fontSize: "1.5rem" }}
           onClick={(event) => handleClick(event)}
         >
           Share
         </TextButton>
       </MobileHeader>
       <form
-        style={file && { display: 'block' }}
+        style={file && { display: "block" }}
         className="new-post__form post-form"
       >
         <Fragment>
@@ -90,7 +89,7 @@ const NewPostForm = ({
                 imageSrc={
                   currentUser.avatar
                     ? currentUser.avatar
-                    : require('../../../assets/img/default-avatar.png')
+                    : require("../../../assets/img/default-avatar.png")
                 }
               />
             </div>

@@ -1,5 +1,4 @@
-import axios from 'axios';
-
+import axios from "axios";
 /**
  * Fetches the profile information of a specific user
  * @function getUserProfile

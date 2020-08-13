@@ -1,8 +1,7 @@
-import React from 'react';
-import classNames from 'classnames';
-import PropTypes from 'prop-types';
-import { animated } from 'react-spring';
-
+import React from "react";
+import classNames from "classnames";
+import PropTypes from "prop-types";
+import { animated } from "react-spring";
 const Icon = ({ onClick, className, icon, style }) => {
   const iconClassNames = classNames({
     icon: true,

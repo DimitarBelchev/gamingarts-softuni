@@ -1,6 +1,5 @@
 .image-grid {
   grid-column: center-start / center-end;
-
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: 1fr;

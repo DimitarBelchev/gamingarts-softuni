@@ -4,24 +4,23 @@ import React, {
   useEffect,
   useRef,
   useState,
-} from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-
+} from "react";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import {
   createComment,
   createCommentReply,
-} from '../../../services/commentService';
+} from "../../../services/commentService";
 
 import {
   INITIAL_STATE,
   postDialogCommentFormReducer,
-} from './postDialogCommentFormReducer';
+} from "./postDialogCommentFormReducer";
 
-import useSearchUsersDebounced from '../../../hooks/useSearchUsersDebounced';
+import useSearchUsersDebounced from "../../../hooks/useSearchUsersDebounced";
 
-import Loader from '../../Loader/Loader';
-import SearchSuggestion from '../../SearchSuggestion/SearchSuggestion';
+import Loader from "../../Loader/Loader";
+import SearchSuggestion from "../../SearchSuggestion/SearchSuggestion";
 
 const PostDialogCommentForm = ({
   token,
@@ -59,19 +58,19 @@ const PostDialogCommentForm = ({
     event.preventDefault();
     if (state.comment.length === 0) {
       return dispatch({
-        type: 'POST_COMMENT_FAILURE',
-        payload: 'You cannot post an empty comment.',
+        type: "POST_COMMENT_FAILURE",
+        payload: "You cannot post an empty comment.",
       });
     }
 
     try {
       setResult(null);
-      dispatch({ type: 'POST_COMMENT_START' });
+      dispatch({ type: "POST_COMMENT_START" });
       if (!replying) {
         // The user is not replying to a comment
         const comment = await createComment(state.comment, postId, token);
         dispatch({
-          type: 'POST_COMMENT_SUCCESS',
+          type: "POST_COMMENT_SUCCESS",
           payload: { comment, dispatch: dialogDispatch, postId },
         });
         // Scroll to bottom to see posted comment
@@ -84,23 +83,23 @@ const PostDialogCommentForm = ({
           token
         );
         dispatch({
-          type: 'POST_COMMENT_REPLY_SUCCESS',
+          type: "POST_COMMENT_REPLY_SUCCESS",
           payload: {
             comment,
             dispatch: dialogDispatch,
             parentCommentId: replying.commentId,
           },
         });
-        dialogDispatch({ type: 'SET_REPLYING' });
+        dialogDispatch({ type: "SET_REPLYING" });
       }
       // Increment the comment count on the overlay of the image on the profile page
       profileDispatch &&
         profileDispatch({
-          type: 'INCREMENT_POST_COMMENTS_COUNT',
+          type: "INCREMENT_POST_COMMENTS_COUNT",
           payload: postId,
         });
     } catch (err) {
-      dispatch({ type: 'POST_COMMENT_FAILURE', payload: err });
+      dispatch({ type: "POST_COMMENT_FAILURE", payload: err });
     }
   };
 
@@ -121,9 +120,9 @@ const PostDialogCommentForm = ({
               onChange={(event) => {
                 // Removed the `@username` from the input so the user is no longer looking to reply
                 if (replying && !event.target.value) {
-                  dialogDispatch({ type: 'SET_REPLYING' });
+                  dialogDispatch({ type: "SET_REPLYING" });
                 }
-                dispatch({ type: 'SET_COMMENT', payload: event.target.value });
+                dispatch({ type: "SET_COMMENT", payload: event.target.value });
                 // Checking for an @ mention
                 let string = event.target.value.match(
                   new RegExp(/@[a-zA-Z0-9]+$/)
@@ -158,7 +157,7 @@ const PostDialogCommentForm = ({
               <span>
                 <Link to="/login" className="link">
                   Log in
-                </Link>{' '}
+                </Link>{" "}
               </span>
               to like or comment.
             </h4>
@@ -174,7 +173,7 @@ const PostDialogCommentForm = ({
             let comment = commentInputRef.current.value;
             // Replace the last word with the @mention
             dispatch({
-              type: 'SET_COMMENT',
+              type: "SET_COMMENT",
               payload: comment.replace(/@\b(\w+)$/, `@${user.username} `),
             });
             commentInputRef.current.focus();

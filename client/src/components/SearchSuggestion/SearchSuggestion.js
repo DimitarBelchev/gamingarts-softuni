@@ -1,12 +1,8 @@
-import React, { useState, useRef, useEffect } from 'react';
-
-import useScrollPositionThrottled from '../../hooks/useScrollPositionThrottled';
-
-import { searchUsers } from '../../services/userService';
-
-import UsersListSkeleton from '../UsersList/UsersListSkeleton/UsersListSkeleton';
-import UserCard from '../UserCard/UserCard';
-
+import React, { useState, useRef, useEffect } from "react";
+import useScrollPositionThrottled from "../../hooks/useScrollPositionThrottled";
+import { searchUsers } from "../../services/userService";
+import UsersListSkeleton from "../UsersList/UsersListSkeleton/UsersListSkeleton";
+import UserCard from "../UserCard/UserCard";
 const SearchSuggestion = ({ fetching, result, onClick, username }) => {
   const [additionalUsers, setAdditionalUsers] = useState([]);
   const [shouldFetch, setShouldFetch] = useState(false);

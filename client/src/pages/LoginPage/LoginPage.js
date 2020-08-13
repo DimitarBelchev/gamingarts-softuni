@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { useHistory, useLocation } from "react-router-dom";
 import { selectCurrentUser } from "../../redux/user/userSelectors";
-
 import LoginCard from "../../components/LoginCard/LoginCard";
 
 const LoginPage = ({ currentUser }) => {

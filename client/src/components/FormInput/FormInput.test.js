@@ -1,15 +1,12 @@
-import React from 'react';
-import { shallow } from 'enzyme';
-
-import FormInput from './FormInput';
-
-import { checkProps, findByTestAttribute } from '../../utils/test/testUtils';
-
+import React from "react";
+import { shallow } from "enzyme";
+import FormInput from "./FormInput";
+import { checkProps, findByTestAttribute } from "../../utils/test/testUtils";
 const defaultProps = {
-  placeholder: 'sfds',
-  type: 'text',
+  placeholder: "sfds",
+  type: "text",
   onChange: jest.fn(),
-  required: true
+  required: true,
 };
 
 /**
@@ -23,15 +20,15 @@ export const setup = (initialProps = {}) => {
   return wrapper;
 };
 
-describe('render', () => {
-  test('renders without error', () => {
+describe("render", () => {
+  test("renders without error", () => {
     const wrapper = setup();
-    const component = findByTestAttribute(wrapper, 'component-input');
+    const component = findByTestAttribute(wrapper, "component-input");
     expect(component.exists()).toBeTruthy();
   });
 });
 
-test('does not throw error with expected props', () => {
+test("does not throw error with expected props", () => {
   const result = checkProps(FormInput, defaultProps);
   expect(result).toBeUndefined();
 });

@@ -2,12 +2,10 @@
   width: $icon-medium-size;
   height: $icon-medium-size;
   color: $color-black;
-
   &--huge {
     width: $icon-huge-size;
     height: $icon-huge-size;
   }
-
   &--larger {
     width: $icon-larger-size;
     height: $icon-larger-size;
@@ -48,7 +46,7 @@
 
   &--unread {
     &:after {
-      content: '';
+      content: "";
       width: 4px;
       height: 4px;
       background: $color-red;

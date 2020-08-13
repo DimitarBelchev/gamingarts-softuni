@@ -1,7 +1,6 @@
 import React, { Fragment, useRef, useEffect } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-
 import {
   changeAvatarStart,
   removeAvatarStart,

@@ -1,5 +1,4 @@
-import notificationTypes from './notificationTypes';
-
+import notificationTypes from "./notificationTypes";
 const INITIAL_STATE = {
   notifications: [],
   unreadCount: 0,

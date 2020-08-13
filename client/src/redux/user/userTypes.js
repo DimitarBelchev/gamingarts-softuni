@@ -16,5 +16,4 @@ const userTypes = {
   UPDATE_PROFILE_FAILURE: "UPDATE_PROFILE_FAILURE",
   UPDATE_PROFILE_SUCCESS: "UPDATE_PROFILE_SUCCESS",
 };
-
 export default userTypes;

@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
 const NotFoundPage = () => (
   <main className="not-found-page grid">
     <div

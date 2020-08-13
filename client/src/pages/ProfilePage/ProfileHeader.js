@@ -1,12 +1,11 @@
-import React, { Fragment } from 'react';
-import { Link } from 'react-router-dom';
-
-import ChangeAvatarButton from '../../components/ChangeAvatarButton/ChangeAvatarButton';
-import Avatar from '../../components/Avatar/Avatar';
-import UsersList from '../../components/UsersList/UsersList';
-import UnfollowPrompt from '../../components/UnfollowPrompt/UnfollowPrompt';
-import Button from '../../components/Button/Button';
-import SettingsButton from '../../components/SettingsButton/SettingsButton';
+import React, { Fragment } from "react";
+import { Link } from "react-router-dom";
+import ChangeAvatarButton from "../../components/ChangeAvatarButton/ChangeAvatarButton";
+import Avatar from "../../components/Avatar/Avatar";
+import UsersList from "../../components/UsersList/UsersList";
+import UnfollowPrompt from "../../components/UnfollowPrompt/UnfollowPrompt";
+import Button from "../../components/Button/Button";
+import SettingsButton from "../../components/SettingsButton/SettingsButton";
 
 const ProfileHeader = ({
   currentUser,
@@ -24,7 +23,7 @@ const ProfileHeader = ({
       showModal(
         {
           options: [],
-          title: followers ? 'Followers' : 'Following',
+          title: followers ? "Followers" : "Following",
           cancelButton: false,
           children: (
             <UsersList
@@ -36,7 +35,7 @@ const ProfileHeader = ({
             />
           ),
         },
-        'OptionsDialog/OptionsDialog'
+        "OptionsDialog/OptionsDialog"
       );
   };
 
@@ -61,7 +60,7 @@ const ProfileHeader = ({
                   options: [
                     {
                       warning: true,
-                      text: 'Unfollow',
+                      text: "Unfollow",
                       onClick: () => follow(),
                     },
                   ],
@@ -72,7 +71,7 @@ const ProfileHeader = ({
                     />
                   ),
                 },
-                'OptionsDialog/OptionsDialog'
+                "OptionsDialog/OptionsDialog"
               )
             }
             inverted
@@ -110,19 +109,19 @@ const ProfileHeader = ({
 
         <div className="profile-stats">
           <p className="heading-3">
-            <b>{postCount}</b> {postCount === 1 ? 'post' : 'posts'}
+            <b>{postCount}</b> {postCount === 1 ? "post" : "posts"}
           </p>
           <p
             onClick={() => showUsersModal(followers)}
-            style={{ cursor: 'pointer' }}
+            style={{ cursor: "pointer" }}
             className="heading-3"
           >
-            <b>{followers}</b>{' '}
-            {followers > 1 || followers === 0 ? 'followers' : 'follower'}
+            <b>{followers}</b>{" "}
+            {followers > 1 || followers === 0 ? "followers" : "follower"}
           </p>
           <p
             onClick={() => showUsersModal(null, following)}
-            style={{ cursor: 'pointer' }}
+            style={{ cursor: "pointer" }}
             className="heading-3"
           >
             <b>{following}</b> following
@@ -135,7 +134,7 @@ const ProfileHeader = ({
               <b>{fullName}</b>
             </h3>
           )}
-          <p className="heading-3" style={{ whiteSpace: 'pre' }}>
+          <p className="heading-3" style={{ whiteSpace: "pre" }}>
             {bio}
           </p>
           {website && (
@@ -160,7 +159,7 @@ const ProfileHeader = ({
           )}
           <h3
             className="heading-3 font-medium"
-            style={{ whiteSpace: 'pre-wrap' }}
+            style={{ whiteSpace: "pre-wrap" }}
           >
             {bio}
           </h3>
@@ -180,22 +179,22 @@ const ProfileHeader = ({
           <h3 className="heading-3">
             <b>{postCount}</b>
             <span className="font-medium color-grey">
-              {postCount === 1 ? 'post' : 'posts'}
+              {postCount === 1 ? "post" : "posts"}
             </span>
           </h3>
           <h3
             onClick={() => showUsersModal(followers)}
-            style={{ cursor: 'pointer' }}
+            style={{ cursor: "pointer" }}
             className="heading-3"
           >
-            <b>{followers}</b>{' '}
+            <b>{followers}</b>{" "}
             <span className="font-medium color-grey">
-              {followers > 1 || followers === 0 ? 'followers' : 'follower'}
+              {followers > 1 || followers === 0 ? "followers" : "follower"}
             </span>
           </h3>
           <h3
             onClick={() => showUsersModal(null, following)}
-            style={{ cursor: 'pointer' }}
+            style={{ cursor: "pointer" }}
             className="heading-3"
           >
             <b>{following}</b>
