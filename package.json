@@ -9,13 +9,13 @@
   },
   "scripts": {
     "client": "cd client && npm run start",
-    "server": "cd server && nodemon index.js",
+    "server": "nodemon index.js",
     "backend": "cd server && nodemon index.js",
     "frontend": "cd client && npm run start",
-    "web": "node index.js",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
     "app": "concurrently --names \"backend,frontend\" \"npm run backend --silent\" \"npm run frontend --silent\"",
-    "start": "node server/index.js",
-    "heroku-postbuild": "cd client && npm install && npm run build"
+    "start": "node index.js",
+    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
   "keywords": [],
   "author": "Dimitar Belchev",
