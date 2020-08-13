@@ -14,7 +14,7 @@
     "frontend": "cd client && npm run start",
     "web": "cd server && node index.js",
     "app": "concurrently --names \"backend,frontend\" \"npm run backend --silent\" \"npm run frontend --silent\"",
-    "start": "node index.js",
+    "start": "node server/index.js",
     "heroku-postbuild": "cd client && npm build"
   },
   "keywords": [],
