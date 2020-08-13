@@ -2,7 +2,7 @@
   "name": "softuni-react-gamingarts",
   "version": "1.0.0",
   "description": "",
-  "main": "server/index.js",
+  "main": "index.js",
   "engines": {
     "node": "14.5.0",
     "npm": "6.14.5"
