@@ -1,6 +1,6 @@
 const Comment = require("../models/Comment");
 const Notification = require("../models/Notification");
-const User = require("../models/User");
+const User = require("../models/user");
 const ObjectId = require("mongoose").Types.ObjectId;
 const nodemailer = require("nodemailer");
 const handlebars = require("handlebars");
