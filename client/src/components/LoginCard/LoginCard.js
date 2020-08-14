@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
@@ -33,67 +33,75 @@ const LoginCard = ({
   currentUser && onClick();
 
   return (
-    <div
-      className="login-card-container"
-      style={
-        modal
-          ? {
+    <Fragment>
+      <div
+        className="login-card-container"
+        style={
+          modal
+            ? {
+                padding: "2rem",
+              }
+            : {}
+        }
+      >
+        <Card className="form-card">
+          <h1 className="heading-logo text-center">GamingArts</h1>
+          <h2
+            style={{ fontSize: "1.7rem" }}
+            className="heading-2 color- text-center"
+          >
+            Gaming is art.
+          </h2>
+          <form
+            onSubmit={(event) => handleSubmit(event)}
+            className="form-card__form"
+          >
+            <FormInput
+              placeholder="Username or email address"
+              type="text"
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <FormInput
+              placeholder="Password"
+              type="password"
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <Button disabled={fetching} loading={fetching}>
+              Log In
+            </Button>
+          </form>
+          {error && (
+            <p style={{ padding: "1rem 0" }} className="error">
+              {error}
+            </p>
+          )}
+          <TextButton style={{ marginTop: "1.5rem" }} darkBlue small>
+            Forgot password?
+          </TextButton>
+        </Card>
+        <Card>
+          <section
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
               padding: "2rem",
-            }
-          : {}
-      }
-    >
-      <Card className="form-card">
-        <h1 className="heading-logo text-center">GamingArts</h1>
-        <form
-          onSubmit={(event) => handleSubmit(event)}
-          className="form-card__form"
-        >
-          <FormInput
-            placeholder="Username or email address"
-            type="text"
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          <FormInput
-            placeholder="Password"
-            type="password"
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          <Button disabled={fetching} loading={fetching}>
-            Log In
-          </Button>
-        </form>
-        {error && (
-          <p style={{ padding: "1rem 0" }} className="error">
-            {error}
-          </p>
-        )}
-        <TextButton style={{ marginTop: "1.5rem" }} darkBlue small>
-          Forgot password?
-        </TextButton>
-      </Card>
-      <Card>
-        <section
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            padding: "2rem",
-          }}
-        >
-          <h4 style={{ marginRight: "5px" }} className="heading-4 font-thin">
-            Don't have an account?
-          </h4>
-          <Link to="/signup" onClick={() => onClick && onClick()}>
-            <TextButton medium blue bold>
-              Sign up
-            </TextButton>
-          </Link>
-        </section>
-      </Card>
-    </div>
+            }}
+          >
+            <h4 style={{ marginRight: "5px" }} className="heading-4 font-thin">
+              Don't have an account?
+            </h4>
+            <Link to="/signup" onClick={() => onClick && onClick()}>
+              <TextButton medium blue bold>
+                Sign up
+              </TextButton>
+            </Link>
+          </section>
+        </Card>
+      </div>
+    </Fragment>
   );
 };
 

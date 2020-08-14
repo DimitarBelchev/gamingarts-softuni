@@ -87,9 +87,6 @@ const ChangePasswordForm = ({ currentUser, token, showAlert }) => {
       </SettingsFormGroup>
       <SettingsFormGroup>
         <label></label>
-        <TextButton style={{ width: "15rem", textAlign: "left" }} blue bold>
-          Forgot Password?
-        </TextButton>
       </SettingsFormGroup>
     </SettingsForm>
   );
