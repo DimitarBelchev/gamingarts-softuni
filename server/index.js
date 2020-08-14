@@ -28,10 +28,10 @@ app.use("/api", apiRouter);
 
 if (process.env.NODE_ENV === "production") {
   app.use(compression());
-  app.use(express.static(path.join(__dirname, "../client/build")));
+  app.use(express.static(path.join(__dirname, "client/build")));
 
   app.get("*", function (req, res) {
-    res.sendFile(path.join(__dirname, "..client", "build", "index.html"));
+    res.sendFile(path.join(__dirname, "client/build", "index.html"));
   });
 }
 
@@ -39,9 +39,7 @@ if (process.env.NODE_ENV === "production") {
   try {
     await mongoose.connect(process.env.MONGO_URI, {
       useNewUrlParser: true,
-      useFindAndModify: true,
       useUnifiedTopology: true,
-      useCreateIndex: true,
       useCreateIndex: true,
     });
     console.log("Connected to database");
