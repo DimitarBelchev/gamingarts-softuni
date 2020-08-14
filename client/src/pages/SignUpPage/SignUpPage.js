@@ -11,7 +11,10 @@ const SignUpPage = ({ currentUser }) => {
     if (currentUser) history.push("/");
   }, [currentUser, history]);
   return (
-    <main className="sign-up-page">
+    // <main className="sign-up-page">
+    //   <div className="login-page__showcase"></div>
+    <main data-test="page-login" className="login-page">
+      <div className="login-page__showcase"></div>
       <SignUpCard />
     </main>
   );
