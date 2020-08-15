@@ -1,7 +1,6 @@
 import React, { Fragment, useEffect } from "react";
 import MobileHeader from "../../components/Header/MobileHeader/MobileHeader";
 import NotificationFeed from "../../components/Notification/NotificationFeed/NotificationFeed";
-import ReactGa from "react-ga";
 
 const ActivityPage = () => {
   useEffect(() => {

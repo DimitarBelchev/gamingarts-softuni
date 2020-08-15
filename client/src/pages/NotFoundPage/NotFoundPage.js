@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ReactGa from "react-ga";
+
 const NotFoundPage = () => (
   <main className="not-found-page grid">
     <div

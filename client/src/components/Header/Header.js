@@ -12,6 +12,7 @@ import NewPostButton from "../NewPost/NewPostButton/NewPostButton";
 import NotificationButton from "../Notification/NotificationButton/NotificationButton";
 import Button from "../Button/Button";
 import Icon from "../Icon/Icon";
+import ReactGa from "react-ga";
 
 const Header = memo(({ currentUser }) => {
   const [shouldMinimizeHeader, setShouldMinimizeHeader] = useState(false);
@@ -46,7 +47,7 @@ const Header = memo(({ currentUser }) => {
         <div className="header__icons">
           {currentUser ? (
             <Fragment>
-              <Link to="/explore">
+              <Link to="/explore" onClick={(e) => ReactGa.pageview("explore")}>
                 <Icon
                   icon={pathname === "/explore" ? "compass" : "compass-outline"}
                 />

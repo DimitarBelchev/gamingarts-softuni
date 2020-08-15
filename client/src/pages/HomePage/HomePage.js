@@ -18,7 +18,6 @@ import MobileHeader from "../../components/Header/MobileHeader/MobileHeader";
 import Icon from "../../components/Icon/Icon";
 import NewPostButton from "../../components/NewPost/NewPostButton/NewPostButton";
 import SuggestedUsers from "../../components/Suggestion/SuggestedUsers/SuggestedUsers";
-import ReactGa from "react-ga";
 
 const HomePage = ({
   currentUser,
