@@ -77,18 +77,23 @@ const SignUpCard = ({ signUpStart, error, fetching, modal }) => {
               valid={formik.touched.email && !formik.errors.email}
               placeholder="Email address"
             />
+            <p className="heading-5 color-grey">Use a valid email format!</p>
             <FormInput
               name="fullName"
               fieldProps={formik.getFieldProps("fullName")}
               valid={formik.touched.fullName && !formik.errors.fullName}
               placeholder="Full Name"
             />
+            <p className="heading-5 color-grey">Insert your name here!</p>
             <FormInput
               name="username"
               fieldProps={formik.getFieldProps("username")}
               valid={formik.touched.username && !formik.errors.username}
               placeholder="Username"
             />
+            <p className="heading-5 color-grey">
+              Insert your desired username! 3-30 characters allowed!
+            </p>
             <FormInput
               name="password"
               fieldProps={formik.getFieldProps("password")}
@@ -117,8 +122,8 @@ const SignUpCard = ({ signUpStart, error, fetching, modal }) => {
               ? error
               : formik.submitCount > 0 && Object.values(formik.errors)[0]}
           </p>
-          <p className="heading-5 color-grey">
-            Sign up now to express your love for your favorite medium
+          <p className="heading-5 color-dark">
+            Sign up now to express your love for your favorite medium!
           </p>
         </Card>
         <Card>

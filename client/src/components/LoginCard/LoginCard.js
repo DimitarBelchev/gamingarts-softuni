@@ -77,9 +77,6 @@ const LoginCard = ({
               {error}
             </p>
           )}
-          <TextButton style={{ marginTop: "1.5rem" }} darkBlue small>
-            Forgot password?
-          </TextButton>
         </Card>
         <Card>
           <section
