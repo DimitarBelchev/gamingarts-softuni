@@ -7,6 +7,7 @@ import { signInStart } from "../../redux/user/userActions";
 import { connectSocket } from "../../redux/socket/socketActions";
 import { fetchNotificationsStart } from "../../redux/notification/notificationActions";
 
+import ProtectedLoginRoute from "../ProtectedloginRoute/ProtectedLoginRoute";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import Header from "../Header/Header";
 import Modal from "../../components/Modal/Modal";
@@ -102,8 +103,8 @@ export function UnconnectedApp({
             )
         )}
         <Switch>
-          <Route path="/login" component={LoginPage} />
-          <Route path="/signup" component={SignUpPage} />
+          <ProtectedLoginRoute path="/login" component={LoginPage} />
+          <ProtectedLoginRoute path="/signup" component={SignUpPage} />
           <ProtectedRoute exact path="/" component={HomePage} />
           <ProtectedRoute path="/settings" component={SettingsPage} />
           <ProtectedRoute path="/activity" component={ActivityPage} />
