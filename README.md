@@ -1,15 +1,12 @@
 Gaming Arts project made by Dimitar Belchev.
 
 Bonuses:
-Heroku Deployment:https://gamingarts.herokuapp.com/
 
----
+## Heroku Deployment:https://gamingarts.herokuapp.com/
 
 ## Onedrive file storage:https://1drv.ms/u/s!ArSmWeqlGQawige0CGxkltgVUt2f?e=MO4HKP
 
----
-
-Use of Cloudinary, redux, socket io, google analitycs, jest-enzyme
+## Use of Cloudinary, redux, socket io, google analitycs, jest-enzyme
 
 How to install:
 1.Download the code locally
@@ -19,7 +16,7 @@ How to install:
 What is GamingArts:
 It is a web app for sharing and discussing gaming images inspired by Instagram.
 
-## Users must be registered to view the contents of the web app. They can also login if they already have an account.
+!!!Users must be registered to view the contents of the web app. They can also login if they already have an account!!!
 
 After they have entered the app they can:
 
