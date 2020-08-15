@@ -14,8 +14,9 @@ import Modal from "../../components/Modal/Modal";
 import Alert from "../../components/Alert/Alert";
 import Footer from "../../components/Footer/Footer";
 import MobileNav from "../../components/MobileNav/MobileNav";
-
 import LoadingPage from "../../pages/LoadingPage/LoadingPage";
+import ReactGa from "react-ga";
+
 const ProfilePage = lazy(() => import("../../pages/ProfilePage/ProfilePage"));
 const PostPage = lazy(() => import("../../pages/PostPage/PostPage"));
 const ConfirmationPage = lazy(() =>
@@ -48,6 +49,11 @@ export function UnconnectedApp({
   const {
     location: { pathname },
   } = useHistory();
+
+  useEffect(() => {
+    ReactGa.initialize("UA-175518918-1");
+    ReactGa.pageview(window.location.pathname + window.location.search);
+  }, []);
 
   useEffect(() => {
     if (token) {
@@ -86,7 +92,7 @@ export function UnconnectedApp({
   });
 
   const renderApp = () => {
-    // Wait for authentication
+    // wait for auth
     if (!currentUser && token) {
       return <LoadingPage />;
     }

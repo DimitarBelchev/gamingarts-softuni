@@ -6,7 +6,7 @@ import { showModal } from "../../redux/modal/modalActions";
 import { selectToken } from "../../redux/user/userSelectors";
 import { confirmUser } from "../../services/userService";
 import Loader from "../../components/Loader/Loader";
-
+import ReactGa from "react-ga";
 const VerificationPage = ({ authToken, showModal }) => {
   const history = useHistory();
   const { token } = useParams();

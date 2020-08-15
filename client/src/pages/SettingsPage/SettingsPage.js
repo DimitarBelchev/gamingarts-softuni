@@ -5,7 +5,7 @@ import Card from "../../components/Card/Card";
 import ChangePasswordForm from "../../components/ChangePasswordForm/ChangePasswordForm";
 import EditProfileForm from "../../components/EditProfileForm/EditProfileForm";
 import MobileHeader from "../../components/Header/MobileHeader/MobileHeader";
-
+import ReactGa from "react-ga";
 const SettingsPage = () => (
   <Fragment>
     <MobileHeader backArrow>

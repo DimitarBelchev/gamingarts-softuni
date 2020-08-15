@@ -10,7 +10,7 @@ import HashtagPosts from "../../components/HashtagPosts/HashtagPosts";
 
 import ProtectedRoute from "../../components/ProtectedRoute/ProtectedRoute";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
-
+import ReactGa from "react-ga";
 const ExplorePage = ({ token, showAlert, showModal, match }) => {
   useEffect(() => {
     document.title = "GamingArts";

@@ -5,7 +5,11 @@ Heroku Deployment:https://gamingarts.herokuapp.com/
 
 ---
 
-Onedrive file storage:https://1drv.ms/u/s!ArSmWeqlGQawige0CGxkltgVUt2f?e=MO4HKP
+## Onedrive file storage:https://1drv.ms/u/s!ArSmWeqlGQawige0CGxkltgVUt2f?e=MO4HKP
+
+---
+
+Use of Cloudinary, redux, socket io, google analitycs, jest-enzyme
 
 How to install:
 1.Download the code locally

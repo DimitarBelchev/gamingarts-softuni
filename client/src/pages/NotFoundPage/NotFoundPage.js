@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import ReactGa from "react-ga";
 const NotFoundPage = () => (
   <main className="not-found-page grid">
     <div
@@ -11,7 +12,7 @@ const NotFoundPage = () => (
     >
       <h1 className="heading-1">Sorry, this page isn't available.</h1>
       <h3 className="heading-3 font-medium">
-        The link you followed may be broken, or the page may have been removed.{" "}
+        You fucked up.{" "}
         <Link to="/" className="link">
           Go back to GamingArts.
         </Link>

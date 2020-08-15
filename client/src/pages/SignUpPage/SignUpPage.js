@@ -4,7 +4,7 @@ import { createStructuredSelector } from "reselect";
 import { useHistory } from "react-router-dom";
 import { selectCurrentUser } from "../../redux/user/userSelectors";
 import SignUpCard from "../../components/SignUpCard/SignUpCard";
-
+import ReactGa from "react-ga";
 const SignUpPage = ({ currentUser }) => {
   const history = useHistory();
   useEffect(() => {

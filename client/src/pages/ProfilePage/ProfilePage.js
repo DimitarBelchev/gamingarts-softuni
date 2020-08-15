@@ -18,6 +18,7 @@ import LoginCard from "../../components/LoginCard/LoginCard";
 import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
 import ProfileHeader from "./ProfileHeader";
 import EmptyProfile from "./EmptyProfile";
+import ReactGa from "react-ga";
 
 const ProfilePage = ({ currentUser, token, showModal, hideModal }) => {
   const { username } = useParams();
