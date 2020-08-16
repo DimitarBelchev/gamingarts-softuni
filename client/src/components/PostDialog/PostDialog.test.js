@@ -13,12 +13,6 @@ const INITIAL_PROPS = {
   profileDispatch: jest.fn(),
 };
 
-/**
- * Function to set up a wrapped component
- * @function setup
- * @param {object} initialState The initial state to be used for this setup
- * @returns {ShallowWrapper} The wrapped component
- */
 const setup = (
   initialState = { user: { token: "123", currentUser: { username: "test" } } }
 ) => {

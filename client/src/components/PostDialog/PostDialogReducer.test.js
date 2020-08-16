@@ -47,44 +47,6 @@ test("returns expected state when `FETCH_POST_FAILURE` is passed", () => {
   });
 });
 
-test("returns expected state when `FETCH_POST_SUCCESS` is passed", () => {
-  const newState = postDialogReducer(INITIAL_STATE, {
-    type: "FETCH_POST_SUCCESS",
-    payload: post,
-  });
-
-  expect(newState).toEqual({
-    fetching: false,
-    error: false,
-    replying: false,
-    data: post,
-  });
-});
-
-test("returns expected state and calls dispatch when `VOTE_POST` is passed", () => {
-  const dispatchMock = jest.fn();
-  const newState = postDialogReducer(seededState, {
-    type: "VOTE_POST",
-    payload: {
-      currentUser: user,
-      postId: "321",
-      dispatch: dispatchMock,
-    },
-  });
-
-  expect(newState).toEqual({
-    fetching: false,
-    error: false,
-    replying: false,
-    data: {
-      ...post,
-      postVotes: [{ votes: [{ author: user._id }] }],
-    },
-  });
-
-  expect(dispatchMock).toHaveBeenCalledTimes(1);
-});
-
 test("returns expected state when `VOTE_COMMENT` is passed and comment has NOT been voted on", () => {
   const newState = postDialogReducer(seededState, {
     type: "VOTE_COMMENT",
@@ -97,42 +59,6 @@ test("returns expected state when `VOTE_COMMENT` is passed and comment has NOT b
       ...seededState.data,
       comments: [{ ...comment, commentVotes: [{ author: user._id }] }],
     },
-  });
-});
-
-test("returns expected state when `ADD_COMMENT` is passed", () => {
-  const newComment = {
-    _id: "678",
-    message: "test2",
-    author: user,
-    post: "12345",
-    date: 32432432324,
-    commentReplies: 0,
-    commentVotes: [],
-  };
-  const newState = postDialogReducer(seededState, {
-    type: "ADD_COMMENT",
-    payload: newComment,
-  });
-
-  expect(newState).toEqual({
-    ...seededState,
-    data: {
-      ...seededState.data,
-      comments: [...seededState.data.comments, newComment],
-    },
-  });
-});
-
-test("returns expected state when `REMOVE_COMMENT` is passed", () => {
-  const newState = postDialogReducer(seededState, {
-    type: "REMOVE_COMMENT",
-    payload: comment._id,
-  });
-
-  expect(newState).toEqual({
-    ...seededState,
-    data: { ...seededState.data, comments: [] },
   });
 });
 

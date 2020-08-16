@@ -26,12 +26,6 @@ const INITIAL_PROPS = {
   bookmarkPost: jest.fn(),
 };
 
-/**
- * Function to set up a wrapped component
- * @function setup
- * @param {object} initialState The initial state to be used for this setup
- * @returns {ShallowWrapper} The wrapped component
- */
 const setup = (initialState = {}, additionalProps = {}) => {
   const store = storeFactory(initialState);
   const wrapper = shallow(
@@ -50,15 +44,4 @@ test("renders without error", () => {
 test("does not throw error with expected props", () => {
   const result = checkProps(PostDialogStats, INITIAL_PROPS);
   expect(result).toBeUndefined();
-});
-
-test("calls dispatch when like button is clicked", () => {
-  const mockDispatch = jest.fn();
-  const wrapper = setup({}, { dispatch: mockDispatch });
-  const likeButton = findByTestAttribute(wrapper, "component-like-button");
-
-  likeButton.simulate("click", {
-    nativeEvent: { stopImmediatePropagation: jest.fn() },
-  });
-  expect(mockDispatch).toHaveBeenCalledTimes(1);
 });
