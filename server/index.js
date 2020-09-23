@@ -76,7 +76,6 @@ const io = socketio(expressServer);
 app.set("socketio", io);
 console.log("Socket.io listening for connections");
 
-// Authenticate before establishing a socket connection
 io.use((socket, next) => {
   const token = socket.handshake.query.token;
   if (token) {
