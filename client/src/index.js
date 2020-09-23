@@ -7,7 +7,7 @@ import { Provider } from "react-redux";
 
 import store from "./redux/store";
 
-import "./sass/main.scss";
+import "./scss/main.scss";
 
 if (process.env.NODE_ENV === "development") {
   const whyDidYouRender = require("@welldone-software/why-did-you-render");
